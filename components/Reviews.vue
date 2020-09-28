@@ -1,8 +1,11 @@
 <template>
   <div class="reviews">
     <div class="reviews-title"><p class="reviews-title__text">ОТЗЫВЫ</p></div>
-    <div class="reviews-had">
-      <lottie :options="defaultOptions" :height="519" :width="597" v-on:animCreated="handleAnimation" />
+    <div class="reviews-had" v-if="CheckDevice === false">
+      <lottie :options="defaultOptions" :height="519" :width="597"  />
+    </div>
+    <div class="reviews-had" v-else>
+      <lottie :options="defaultOptions" :height="190" :width="320"  />
     </div>
     <div class="reviews-list">
       <div class="reviews-row">
@@ -82,28 +85,9 @@ export default {
     }
   },
   methods: {
-    handleAnimation: function (anim) {
-      this.anim = anim;
-    },
-
-    stop: function () {
-      this.anim.stop();
-    },
-
-    play: function () {
-      this.anim.play();
-    },
-
-    pause: function () {
-      this.anim.pause();
-    },
-
-    onSpeedChange: function () {
-      this.anim.setSpeed(this.animationSpeed);
+    CheckDevice(){
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
-  },
-  mounted() {
-    this.anim.play();
   }
 }
 </script>

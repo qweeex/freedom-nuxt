@@ -3,72 +3,17 @@
         <div class="keys-container">
             <div class="keys-row">
                 <Logo/>
-                <div :class="{ hiddenContent: showPopup }" class="keys-content">
+                <div v-if="this.CheckDevice() === false" :class="{ hiddenContent: showPopup }" class="keys-content keys-desktop">
                     <div v-swiper:KeysSwiper="swiperOptions" class="keys-content__slider swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="content-slide swiper-slide">
+                            <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="key.MIGX_id">
                                 <div class="content-slide__wrapper">
-                                    <div class="slider-img"><img src="~/assets/img/keys-1.png" alt="" /></div>
+                                    <div class="slider-img"><img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" /></div>
                                     <div class="slider-content">
                                         <div class="content-title">
-                                            <span>PR и маркетинговое<br />сопровождение<br />ресторана Nikolas</span>
+                                            <span>{{ keyt.title }}</span>
                                         </div>
-                                        <div class="content-link"><a v-on:click="PopupShow()">Читать подробнее</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content-slide swiper-slide">
-                                <div class="content-slide__wrapper">
-                                    <div class="slider-img"><img src="~/assets/img/keys-2.png" alt="" /></div>
-                                    <div class="slider-content">
-                                        <div class="content-title">
-                                            <span>PR, SMM и event для сети<br />винных баров Brix</span>
-                                        </div>
-                                        <div class="content-link"><a v-on:click="PopupShow()">Читать подробнее</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content-slide swiper-slide">
-                                <div class="content-slide__wrapper">
-                                    <div class="slider-img"><img src="~/assets/img/keys-1.png" alt="" /></div>
-                                    <div class="slider-content">
-                                        <div class="content-title">
-                                            <span>PR и маркетинговое<br />сопровождение<br />ресторана Nikolas</span>
-                                        </div>
-                                        <div class="content-link"><a v-on:click="PopupShow()">Читать подробнее</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content-slide swiper-slide">
-                                <div class="content-slide__wrapper">
-                                    <div class="slider-img"><img src="~/assets/img/keys-2.png" alt="" /></div>
-                                    <div class="slider-content">
-                                        <div class="content-title">
-                                            <span>PR, SMM и event для сети<br />винных баров Brix</span>
-                                        </div>
-                                        <div class="content-link"><a v-on:click="PopupShow()">Читать подробнее</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content-slide swiper-slide">
-                                <div class="content-slide__wrapper">
-                                    <div class="slider-img"><img src="~/assets/img/keys-1.png" alt="" /></div>
-                                    <div class="slider-content">
-                                        <div class="content-title">
-                                            <span>PR и маркетинговое<br />сопровождение<br />ресторана Nikolas</span>
-                                        </div>
-                                        <div class="content-link"><a v-on:click="PopupShow()">Читать подробнее</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content-slide swiper-slide">
-                                <div class="content-slide__wrapper">
-                                    <div class="slider-img"><img src="~/assets/img/keys-2.png" alt="" /></div>
-                                    <div class="slider-content">
-                                        <div class="content-title">
-                                            <span>PR, SMM и event для сети<br />винных баров Brix</span>
-                                        </div>
-                                        <div class="content-link"><a v-on:click="PopupShow()">Читать подробнее</a></div>
+                                        <div class="content-link"><a v-on:click="this.PopupShow()">Читать подробнее</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +22,25 @@
                         <div class="swiper-scrollbar custom-scroll"></div>
                     </div>
                 </div>
+              <div v-if="this.CheckDevice() === true" :class="{ hiddenContent: showPopup }" class="keys-content keys-mobile">
+                <div v-swiper:KeysSwiper2="swiperMob" class="keys-content__slider swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.MIGX_id">
+                      <div class="content-slide__wrapper">
+                        <div class="slider-img"><img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" /></div>
+                        <div class="slider-content">
+                          <div class="content-title">
+                            <span>{{ keyt.title }}</span>
+                          </div>
+                          <div class="content-link"><a v-on:click="this.PopupShow()">Читать подробнее</a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Add Scrollbar -->
+                  <div class="swiper-scrollbar custom-scroll swiper-scrollbar1"></div>
+                </div>
+              </div>
                 <div :class="{ hiddenContent: showPopup }" class="keys-title">
                     <p class="keys-title__text">наши<br />кейсы</p>
                 </div>
@@ -130,57 +94,79 @@
 <script>
     import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
     import Logo from "@/components/Keys/Logo";
+    import axios from 'axios';
     import Keys from '@/static/keys.json';
 
     export default {
-        name: "Keys",
-        components: {
-            Logo,
-            Swiper,
-            SwiperSlide
+      name: "Keys",
+      components: {
+          Logo,
+          Swiper,
+          SwiperSlide
+      },
+      data: () => ({
+        showPopup: false,
+        swiperMob: {
+          slidesPerView: 1,
+          direction: 'horizontal',
+          spaceBetween: 5,
+          slidesOffsetBefore: 15,
+          scrollbar: {
+            el: '.swiper-scrollbar1',
+            draggable: true,
+            dragSize: 39
+          },
         },
-        data() {
-            return {
-                showPopup: false,
-                swiperOptions:{
-                    direction: 'vertical',
-                    slidesPerView: 2,
-                    spaceBetween: 40,
-                    scrollbar: {
-                        el: '.swiper-scrollbar',
-                        draggable: true,
-                        dragSize: 39
-                    },
-                    breakpoints: {
-                        // when window width is >= 320px
-                        320: {
-                            slidesPerView: 2,
-                            direction: 'horizontal',
-                            spaceBetween: 5,
-                        },
-                        600: {
-                            direction: 'vertical',
-                            slidesPerView: 2,
-                            spaceBetween: 0,
-                        }
-                    }
-                }
+        swiperOptions:{
+          direction: 'vertical',
+          slidesPerView: 2,
+          spaceBetween: 40,
+          scrollbar: {
+            el: '.swiper-scrollbar',
+            draggable: true,
+            dragSize: 39
+          },
+          breakpoints: {
+            // when window width is >= 320px
+            320: {
+              slidesPerView: 2,
+              direction: 'horizontal',
+              spaceBetween: 5,
+            },
+            600: {
+              direction: 'vertical',
+              slidesPerView: 2,
+              spaceBetween: 0,
             }
+          }
         },
+        keysInfo: []
+      }),
       methods: {
-            PopupShow(){
-                this.showPopup = true;
-            },
-            PopupHidden(){
-                this.showPopup = false;
-            },
-            InitKeys(){
-              let Height = screen.height;
-              document.querySelector('.keys-content__slider').style.height = 900 + 'px';
-            }
-        },
-      mounted() {
-          this.InitKeys();
+          PopupShow(){
+              this.showPopup = true;
+          },
+          PopupHidden(){
+              this.showPopup = false;
+          },
+          InitKeys(){
+            let Height = screen.height;
+            document.querySelector('.keys-content__slider').style.height = 900 + 'px';
+          },
+          CheckDevice(){
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+          }
+      },
+      async mounted() {
+        const url = 'http://freedom.sitecriy.beget.tech/api/getkeys';
+        const { data } = await axios.get(url, {
+          headers: {
+            lang: 'ru'
+          }
+        })
+        this.keysInfo = data.data;
+        this.InitKeys();
+        console.log(this.CheckDevice());
       }
     }
 </script>
