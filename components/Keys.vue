@@ -3,10 +3,10 @@
         <div class="keys-container">
             <div class="keys-row">
                 <Logo/>
-                <div v-if="this.CheckDevice() === false" :class="{ hiddenContent: showPopup }" class="keys-content keys-desktop">
+                <div v-if="this.phone === false" :class="{ hiddenContent: showPopup }" class="keys-content keys-desktop">
                     <div v-swiper:KeysSwiper="swiperOptions" class="keys-content__slider swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="key.MIGX_id">
+                            <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.MIGX_id">
                                 <div class="content-slide__wrapper">
                                     <div class="slider-img"><img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" /></div>
                                     <div class="slider-content">
@@ -22,7 +22,7 @@
                         <div class="swiper-scrollbar custom-scroll"></div>
                     </div>
                 </div>
-              <div v-if="this.CheckDevice() === true" :class="{ hiddenContent: showPopup }" class="keys-content keys-mobile">
+              <div v-if="this.phone === true" :class="{ hiddenContent: showPopup }" class="keys-content keys-mobile">
                 <div v-swiper:KeysSwiper2="swiperMob" class="keys-content__slider swiper-container">
                   <div class="swiper-wrapper">
                     <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.MIGX_id">
@@ -106,6 +106,7 @@
       },
       data: () => ({
         showPopup: false,
+        phone: false,
         swiperMob: {
           slidesPerView: 1,
           direction: 'horizontal',
@@ -142,6 +143,11 @@
         },
         keysInfo: []
       }),
+      created(){
+        if (process.browser){
+          this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+        }
+      },
       methods: {
           PopupShow(){
               this.showPopup = true;
@@ -154,7 +160,8 @@
             document.querySelector('.keys-content__slider').style.height = 900 + 'px';
           },
           CheckDevice(){
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+            //return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+            return false
           }
       },
       async mounted() {

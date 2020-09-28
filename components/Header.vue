@@ -5,18 +5,33 @@
                 <a href="/"><img src="~/assets/img/logo.svg" alt="" /></a>
             </div>
             <div class="header-menu">
-                <nav>
+                <nav v-if="lang === 'ru'">
                     <a href="#service" class="header-menu__link">Услуги</a>
                     <a href="#about" class="header-menu__link">О нас</a>
                     <a href="#keys" class="header-menu__link">Кейсы</a>
                     <a href="#consulting" class="header-menu__link">Консультации</a>
                     <a href="#contact" class="header-menu__link">Контакты</a>
                 </nav>
+                <nav v-if="lang === 'en'">
+                  <a href="#service" class="header-menu__link">Услуги</a>
+                  <a href="#about" class="header-menu__link">О нас</a>
+                  <a href="#keys" class="header-menu__link">Кейсы</a>
+                  <a href="#consulting" class="header-menu__link">Консультации</a>
+                  <a href="#contact" class="header-menu__link">Контакты</a>
+                </nav>
+              <nav v-if="lang === 'port'">
+                <a href="#service" class="header-menu__link">Nossos serviços</a>
+                <a href="#about" class="header-menu__link">Sobre nós</a>
+                <a href="#keys" class="header-menu__link">Projetos realizados</a>
+                <a href="#consulting" class="header-menu__link">Comentários dos clientes</a>
+                <a href="#contact" class="header-menu__link">Contatos</a>
+              </nav>
             </div>
             <div class="header-lang">
                 <div class="header-lang__list">
-                    <a href="" class="header-lang__link lang-active">Ru</a> <a href="" class="header-lang__link">En</a>
-                    <a href="" class="header-lang__link">Port</a>
+                    <nuxt-link to="/" class="header-lang__link">Ru</nuxt-link>
+                    <nuxt-link to="/en" class="header-lang__link">En</nuxt-link>
+                    <nuxt-link to="/port" class="header-lang__link">Port</nuxt-link>
                 </div>
             </div>
             <div class="header-site">
@@ -34,6 +49,7 @@
 <script>
     export default {
       name: "Header",
+      props: ['lang'],
       data() {
         return{
           audioStatus: false

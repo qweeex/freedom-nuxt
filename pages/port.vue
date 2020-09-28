@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Header lang="ru"/>
+    <Header lang="port"/>
     <MainScreen/>
     <section class="big-bg">
       <Services/>

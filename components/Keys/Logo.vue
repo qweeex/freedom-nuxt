@@ -1,6 +1,6 @@
 <template>
     <div class="keys-logo">
-        <div v-if="CheckDevice === false" v-swiper:mySwiper="swiperOptions" class="keys-logo__slider swiper-container">
+        <div v-if="this.phone === false" v-swiper:mySwiper="swiperOptions" class="keys-logo__slider swiper-container">
             <div class="swiper-wrapper">
                 <div class="logo-slide swiper-slide"><img src="~/assets/img/logo/logo-1.png" alt="" /></div>
                 <div class="logo-slide swiper-slide"><img src="~/assets/img/logo/logo-2.png" alt="" /></div>
@@ -50,6 +50,7 @@
         },
         data() {
             return{
+                phone: false,
                 swiperMobile: {
                   slidesPerView: 3,
                   direction: 'horizontal',
@@ -69,14 +70,9 @@
                 }
             }
         },
-        methods: {
-          CheckDevice(){
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-          }
-        },
-        mounted() {
-          if (this.CheckDevice === false){
-            this.$refs['mySwiper'].swiper.update()
+        created(){
+          if (process.browser){
+            this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
           }
         }
     }

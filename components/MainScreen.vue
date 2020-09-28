@@ -2,7 +2,6 @@
   <div>
     <section class="main">
       <div id="made-in-ny"></div>
-      <Header/>
       <div class="main-line video-elem hide-elem"><img src="~/assets/img/scroll-line.svg" alt="" /></div>
       <div class="main-content video-elem hide-elem">
         <div class="main-content__img">

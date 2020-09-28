@@ -1,7 +1,7 @@
 <template>
   <div class="reviews">
     <div class="reviews-title"><p class="reviews-title__text">ОТЗЫВЫ</p></div>
-    <div class="reviews-had" v-if="CheckDevice === false">
+    <div class="reviews-had" v-if="this.phone === false">
       <lottie :options="defaultOptions" :height="519" :width="597"  />
     </div>
     <div class="reviews-had" v-else>
@@ -73,6 +73,7 @@ export default {
   },
   data(){
     return{
+      phone: false,
       about: {
         start: false,
         played: false
@@ -84,9 +85,9 @@ export default {
       animationSpeed: 1
     }
   },
-  methods: {
-    CheckDevice(){
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  created(){
+    if (process.browser){
+      this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
     }
   }
 }
