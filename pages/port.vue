@@ -3,15 +3,15 @@
     <Header lang="port"/>
     <MainScreen/>
     <section class="big-bg">
-      <Services/>
-      <About/>
+      <Services lang="port"/>
+      <About lang="port"/>
       <div class="cf"></div>
-      <Keys/>
+      <Keys lang="port"/>
     </section>
-    <Reviews/>
-    <Work/>
-    <HandsBlock/>
-    <Contact/>
+    <Reviews lang="port"/>
+    <Work lang="port"/>
+    <HandsBlock lang="port"/>
+    <Contact lang="port"/>
   </div>
 </template>
 

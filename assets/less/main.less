@@ -30,6 +30,12 @@ body { overflow: -moz-scrollbars-none; }
   width: 100%;
   top: 0;
   z-index: 10;
+  &-mobileMenu{
+    display: none;
+  }
+  &-mobile{
+    display: none;
+  }
   &-music{
     position: absolute;
     right: -70px;
@@ -55,7 +61,7 @@ body { overflow: -moz-scrollbars-none; }
       display: flex;
       width: 100%;
       align-items: flex-start;
-      padding-left: 81px;
+      padding-left: 40px;
       padding-top: 18px;
     }
     &__link{

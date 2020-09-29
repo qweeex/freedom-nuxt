@@ -3,15 +3,15 @@
     <Header lang="ru"/>
     <MainScreen/>
     <section class="big-bg">
-      <Services/>
-      <About/>
+      <Services lang="ru"/>
+      <About lang="ru"/>
       <div class="cf"></div>
-      <Keys/>
+      <Keys lang="ru"/>
     </section>
-    <Reviews/>
-    <Work/>
-    <HandsBlock/>
-    <Contact/>
+    <Reviews lang="ru"/>
+    <Work lang="ru"/>
+    <HandsBlock lang="ru"/>
+    <Contact lang="ru"/>
   </div>
 </template>
 

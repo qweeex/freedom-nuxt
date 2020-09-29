@@ -13,7 +13,7 @@
                                         <div class="content-title">
                                             <span>{{ keyt.title }}</span>
                                         </div>
-                                        <div class="content-link"><a v-on:click="this.PopupShow()">Читать подробнее</a></div>
+                                        <div class="content-link"><a @click="PopupShow(keyt.MIGX_id)">Читать подробнее</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                           <div class="content-title">
                             <span>{{ keyt.title }}</span>
                           </div>
-                          <div class="content-link"><a v-on:click="this.PopupShow()">Читать подробнее</a></div>
+                          <div class="content-link"><a @click="PopupShow()">Читать подробнее</a></div>
                         </div>
                       </div>
                     </div>
@@ -42,14 +42,16 @@
                 </div>
               </div>
                 <div :class="{ hiddenContent: showPopup }" class="keys-title">
-                    <p class="keys-title__text">наши<br />кейсы</p>
+                    <p class="keys-title__text" v-if="lang === 'ru'">наши<br />кейсы</p>
+                    <p class="keys-title__text" v-if="lang === 'en'">Our <br/>Cases</p>
+                    <p class="keys-title__text" v-if="lang === 'port'">Projetos <br/>realizados</p>
                 </div>
             </div>
         </div>
         <div class="PopupKeys" :class="{ PopupKeysActive: showPopup }">
             <div class="PopupKeys-wrapper">
                 <div class="PopupKeys-close">
-                    <div class="PopupKeys-close__btn" v-on:click="PopupHidden()"><span>Вернуться назад</span></div>
+                    <div class="PopupKeys-close__btn" @click="PopupHidden()"><span>Вернуться назад</span></div>
                 </div>
                 <div class="PopupKeys-content">
                     <div class="PopupKeys-content__top">
@@ -99,6 +101,7 @@
 
     export default {
       name: "Keys",
+      props: ['lang'],
       components: {
           Logo,
           Swiper,
@@ -108,7 +111,7 @@
         showPopup: false,
         phone: false,
         swiperMob: {
-          slidesPerView: 1,
+          slidesPerView: 'auto',
           direction: 'horizontal',
           spaceBetween: 5,
           slidesOffsetBefore: 15,
@@ -149,8 +152,9 @@
         }
       },
       methods: {
-          PopupShow(){
-              this.showPopup = true;
+          PopupShow(el){
+            console.log(el);
+            this.showPopup = true;
           },
           PopupHidden(){
               this.showPopup = false;
@@ -173,7 +177,6 @@
         })
         this.keysInfo = data.data;
         this.InitKeys();
-        console.log(this.CheckDevice());
       }
     }
 </script>

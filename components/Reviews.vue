@@ -1,6 +1,10 @@
 <template>
   <div class="reviews">
-    <div class="reviews-title"><p class="reviews-title__text">ОТЗЫВЫ</p></div>
+    <div class="reviews-title">
+      <p class="reviews-title__text" v-if="lang === 'ru'">ОТЗЫВЫ</p>
+      <p class="reviews-title__text" v-if="lang === 'en'">Feedback</p>
+      <p class="reviews-title__text" v-if="lang === 'port'">Comentários dos clientes</p>
+    </div>
     <div class="reviews-had" v-if="this.phone === false">
       <lottie :options="defaultOptions" :height="519" :width="597"  />
     </div>
@@ -68,6 +72,7 @@ import animationData from '@/static/lf20_1jfbv90j.json';
 
 export default {
   name: "Reviews",
+  props: ['lang'],
   components: {
     'lottie': Lottie
   },
