@@ -36,32 +36,32 @@ body { overflow: -moz-scrollbars-none; }
   &-mobile{
     display: none;
   }
-  &-music{
-    position: absolute;
-    right: -70px;
-    top: 5px;
-    cursor: pointer;
-  }
   &-container{
-    max-width: 1300px;
+    max-width: 1315px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-wrap: wrap;
   }
   &-logo{
-    width: 15%;
+    width: 13%;
     img{
       padding-left: 8px;
     }
   }
+  &-music{
+    margin-left: 23px;
+    img{
+      cursor: pointer;
+    }
+  }
   &-menu{
-    width: 50%;
+    width: 47%;
     nav{
       display: flex;
       width: 100%;
       align-items: flex-start;
-      padding-left: 40px;
+      padding-left: 51px;
       padding-top: 18px;
     }
     &__link{
@@ -70,7 +70,7 @@ body { overflow: -moz-scrollbars-none; }
       color: #000000;
       display: block;
       text-decoration: none;
-      margin-right: 40px;
+      margin-right: 28px;
       &:nth-last-child(1){
         margin-right: 0;
       }
@@ -79,7 +79,7 @@ body { overflow: -moz-scrollbars-none; }
   &-lang{
     width: 15%;
     &__list{
-      padding-left: 25px;
+      padding-left: 48px;
       padding-top: 18px;
     }
     &__link{
@@ -95,7 +95,8 @@ body { overflow: -moz-scrollbars-none; }
     }
   }
   &-site{
-    width: 20%;
+    margin-left: auto;
+    width: 17%;
     display: flex;
     justify-content: flex-end;
     a{
@@ -150,6 +151,9 @@ body { overflow: -moz-scrollbars-none; }
     text-align: right;
     padding-top: 77px;
     padding-right: 9px;
+    display: block;
+    width: max-content;
+    margin-left: auto;
     &__text{
       font-weight: 800;
       font-size: 48px;

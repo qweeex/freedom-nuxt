@@ -46,26 +46,17 @@ export default {
       let LineRight = document.querySelector('.main-line__right');
 
       window.addEventListener('scroll', function () {
-        let pageY = window.pageYOffset;
-        let mainHeight = document.querySelector('.main').offsetHeight;
+        let second = document.querySelector('.service-lines');
+        let first = document.querySelector('.main-content__img');
+        let calc = () => {
+          return second.offsetTop + first.offsetTop + 16;
+        }
 
-        let calcLine = () =>{
-
-          if (pageY < mainHeight){
-            return pageY / 100 * 10;
-          }
-
-        };
-        // Left line
-        anime({
-          targets: LineLeft,
-          height: calcLine() + "%"
-        });
-        anime({
-          targets: LineRight,
-          height: calcLine() + "%"
-        });
+        LineLeft.style.height = '800px';
+        LineRight.style.height = calc() + 'px';
       });
+
+
     },
     VimeoVideo(){
       /*let player = new Player('made-in-ny', {
@@ -111,7 +102,8 @@ export default {
     top: 258px;
     width: 15px;
     background: #000000;
-    height: 560%;
+    height: 0;
+    transition: all 0.6s;
     left: 0;
   }
   .main-line__right{
@@ -119,7 +111,8 @@ export default {
     top: 258px;
     width: 15px;
     background: #000000;
-    height: 173%;
+    height: 0;
+    transition: all 1s;
     left: 80px;
   }
 }

@@ -226,10 +226,10 @@
     <div class="service-line">
       <div class="service-line__wrapper">
         <div class="service-line__text">
-          <div class="marquee marquee-black marquee-line">СВОБОДА КОММУНИКАЦИЯ ДЛЯ ВАШЕГО БИЗНЕСА СВОБОДА КОММУНИКАЦИЯ ДЛЯ ВАШЕГО БИЗНЕСА</div>
+          <div class="marquee marquee-black marquee-line">Свобода коммуникаций для вашего бизнеса liberdade de comunicação para seu negócio freedom of communications for you business</div>
         </div>
         <div class="service-line__block">
-          <div class="marquee marquee-white marquee-line">СВОБОДА КОММУНИКАЦИЯ ДЛЯ ВАШЕГО БИЗНЕСА СВОБОДА КОММУНИКАЦИЯ ДЛЯ ВАШЕГО БИЗНЕСА</div>
+          <div class="marquee marquee-white marquee-line">Свобода коммуникаций для вашего бизнеса liberdade de comunicação para seu negócio freedom of communications for you business</div>
         </div>
       </div>
     </div>
@@ -255,13 +255,25 @@ export default {
       duplicated: true,
       speed: 100
     });
+    this.ScrollAnimate();
   },
   methods: {
-    ScrollAnimate(e){
-      if (window.scrollY > 50) {
-        console.log('w')
-      }
+    ScrollAnimate(){
+      let line = document.querySelector('.service-lines');
+      let container = document.querySelector('.service-container').clientWidth;
+      let logo = document.querySelector('.main-content__img').clientWidth;
+      let MainLine = document.querySelector('.main-line__right').offsetLeft;
+
+      let width = container - logo;
+      console.log((width / 2) - MainLine);
+      line.style.left = ((width / 2) + MainLine) + 'px';
+      let widthLine = container - (((width / 2) + MainLine) + document.querySelector('.service-title').clientWidth);
+      line.style.width = (widthLine - 10) + 'px';
+
     }
+  },
+  destroyed() {
+    this.ScrollAnimate();
   }
 }
 </script>

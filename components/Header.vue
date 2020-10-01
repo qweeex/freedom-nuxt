@@ -28,6 +28,11 @@
               <a href="#contact" class="header-menu__link">Contatos</a>
             </nav>
           </div>
+          <div class="header-music">
+            <img src="~/assets/img/music.svg" v-if="this.audioStatus === false" v-on:click="PlaySound" alt="">
+            <img src="~/assets/img/pause.svg" v-if="this.audioStatus === true" v-on:click="PauseSound" alt="">
+            <audio src="@/assets/audio/track.mp3" id="music"></audio>
+          </div>
           <div class="header-lang">
             <div class="header-lang__list">
               <nuxt-link to="/" class="header-lang__link">Ru</nuxt-link>
@@ -42,11 +47,6 @@
               <span v-if="lang === 'port'">Passar para</span>
               <img src="~/assets/img/site.svg" alt="" />
             </a>
-          </div>
-          <div class="header-music">
-            <img src="~/assets/img/music.svg" v-if="this.audioStatus === false" v-on:click="PlaySound" alt="">
-            <img src="~/assets/img/pause.svg" v-if="this.audioStatus === true" v-on:click="PauseSound" alt="">
-            <audio src="@/assets/audio/track.mp3" id="music"></audio>
           </div>
           <div class="header-mobileMenu">
             <img src="~/assets/img/menu.svg" :click="this.showMob = true" alt="">
