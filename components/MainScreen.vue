@@ -48,12 +48,31 @@ export default {
       window.addEventListener('scroll', function () {
         let second = document.querySelector('.service-lines');
         let first = document.querySelector('.main-content__img');
-        let calc = () => {
+        let service = document.querySelector('.service');
+
+        let calcRight = () => {
           return second.offsetTop + first.offsetTop + 16;
         }
+        let calcLeft = () => {
+          return service.clientHeight + first.offsetTop + 62;
+        }
 
-        LineLeft.style.height = '800px';
-        LineRight.style.height = calc() + 'px';
+        LineLeft.style.height = calcLeft() + 'px';
+        LineRight.style.height = calcRight() + 'px';
+
+        // Service line
+        setTimeout(() => {
+          let line = document.querySelector('.service-lines');
+          let container = document.querySelector('.service-container').clientWidth;
+          let logo = document.querySelector('.main-content__img').clientWidth;
+          let MainLine = document.querySelector('.main-line__right').offsetLeft;
+
+          let width = container - logo;
+          console.log((width / 2) - MainLine);
+          line.style.left = ((width / 2) + MainLine) + 'px';
+          let widthLine = container - (((width / 2) + MainLine) + document.querySelector('.service-title').clientWidth);
+          line.style.width = (widthLine - 10) + 'px';
+        }, 1000)
       });
 
 

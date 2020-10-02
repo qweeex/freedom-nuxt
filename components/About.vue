@@ -121,7 +121,6 @@ export default {
           return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
         }
 
-        console.log(offset(document.querySelector('.about')));
         // Left line
         anime({
           targets: Line,
