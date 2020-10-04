@@ -13,52 +13,14 @@
     </div>
     <div class="reviews-list">
       <div class="reviews-row">
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
+        <div class="reviews-item" v-for="item in reviews" :key="item.id">
+          <div class="item-img"><img :src="item.img " alt="" /></div>
           <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
-          </div>
-        </div>
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
-          <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
-          </div>
-        </div>
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
-          <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
-          </div>
-        </div>
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
-          <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
-          </div>
-        </div>
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
-          <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
-          </div>
-        </div>
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
-          <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
-          </div>
-        </div>
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
-          <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
-          </div>
-        </div>
-        <div class="reviews-item">
-          <div class="item-img"><img src="~/assets/img/reviews.png" alt="" /></div>
-          <div class="item-text">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam diam penatibus vitae ac, eget.</span>
+            <span>
+              {{  item.small }}
+            </span>
+            <br>
+            <span @click="getReviews(item.id)">Читать подробнее</span>
           </div>
         </div>
       </div>
@@ -69,6 +31,7 @@
 <script>
 import Lottie from 'vue-lottie/src/lottie.vue';
 import animationData from '@/static/lf20_1jfbv90j.json';
+import Axios from 'axios';
 
 export default {
   name: "Reviews",
@@ -87,8 +50,31 @@ export default {
         animationData: animationData,
         autoplay: true
       },
-      animationSpeed: 1
+      animationSpeed: 1,
+      reviews: null
     }
+  },
+  methods: {
+    getReviews(id){
+      const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?id=' + id;
+      console.log(url);
+      const res = Axios.get(url, {
+        headers: {
+          lang: 'ru'
+        }
+      })
+      console.log(res);
+    }
+  },
+  async mounted() {
+    const url = 'http://freedom.sitecriy.beget.tech/api/getreviews';
+    const { data } = await Axios.get(url, {
+      headers: {
+        lang: 'ru'
+      }
+    })
+    console.log(data);
+    this.reviews = data;
   },
   created(){
     if (process.browser){
