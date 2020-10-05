@@ -270,16 +270,16 @@
     &-music{
       position: relative !important;
       right: auto !important;
-      width: 34%;
+      width: 26%;
       img{
         margin-left: auto;
         display: block;
       }
     }
   }
-  //.showMob{
-  //  left: 0 !important;
-  //}
+  .showMob{
+    left: 0 !important;
+  }
   .header-mobile{
     display: flex !important;
     flex-flow: column wrap;
@@ -635,7 +635,178 @@
     display: none;
   }
   .work{
-    display: none;
+    &-title{
+      padding-top: 40px;
+      &__text{
+        font-size: 20px;
+        line-height: 128.5%;
+      }
+    }
+    &-wrapper{
+      margin-top: 40px;
+      .item-1{
+        left: 0;
+        width: 286px;
+        height: 207px;
+        background: url("~assets/img/mob/1.png") center center no-repeat;
+        background-size: cover;
+        .work-item__content{
+          width: 202px;
+          align-items: baseline;
+          .content-title{
+            padding-top: 15px;
+            padding-left: 20px;
+          }
+          .content-desc{
+            width: 100%;
+            left: 0;
+            top: 0;
+            padding-left: 20px;
+            padding-top: 8px;
+          }
+        }
+      }
+      .item-2{
+        margin-top: 0;
+        right: 0;
+        width: 290px;
+        height: 215px;
+        background: url("~assets/img/mob/2.png") center center no-repeat;
+        background-size: cover;
+        margin-left: auto;
+        .work-item__content{
+          width: 178px;
+          align-items: baseline;
+          flex-direction: column;
+          margin-left: auto;
+          margin-right: 14px;
+          .content-title{
+            padding-top: 10px;
+            width: 100%;
+          }
+          .content-desc{
+            width: 100%;
+            left: 0;
+            top: 0;
+            padding-top: 8px;
+            text-align: right;
+          }
+        }
+      }
+      .item-3{
+        left: 0;
+        width: 290px;
+        height: 168px;
+        background: url("~assets/img/mob/3.png") center center no-repeat;
+        background-size: cover;
+        margin-top: 0;
+        .work-item__content{
+          width: 183px;
+          align-items: baseline;
+          .content-title{
+            padding-top: 17px;
+            padding-left: 20px;
+            top: 0;
+          }
+          .content-desc{
+            width: 100%;
+            left: 0;
+            top: 0;
+            padding-left: 20px;
+            padding-top: 10px;
+            display: block;
+          }
+        }
+      }
+      .item-4{
+        margin-top: 0;
+        right: 0;
+        width: 290px;
+        height: 260px;
+        background: url("~assets/img/mob/4.png") center center no-repeat;
+        background-size: cover;
+        margin-left: auto;
+        .work-item__content{
+          width: 176px;
+          align-items: baseline;
+          flex-direction: column;
+          margin-left: auto;
+          margin-right: 14px;
+          .content-title{
+            padding-top: 18px;
+            width: 100%;
+          }
+          .content-desc{
+            width: 100%;
+            left: 0;
+            top: 0;
+            padding-top: 8px;
+            text-align: right;
+          }
+        }
+      }
+      .item-5{
+        left: 0;
+        width: 290px;
+        height: 175px;
+        background: url("~assets/img/mob/5.png") center center no-repeat;
+        background-size: cover;
+        margin-top: 0;
+        .work-item__content{
+          width: 183px;
+          align-items: baseline;
+          .content-title{
+            padding-top: 17px;
+            padding-left: 20px;
+            top: 0;
+          }
+          .content-desc{
+            width: 100%;
+            left: 0;
+            top: 0;
+            padding-left: 20px;
+            padding-top: 10px;
+            display: block;
+          }
+        }
+      }
+    }
+    &-item{
+      margin-top: 60px !important;
+      &__img{
+        display: none;
+      }
+      &::before{
+        font-size: 25px;
+        text-transform: capitalize;
+        color: #FFFFFF;
+        -ms-writing-mode: tb-rl;
+        writing-mode: horizontal-tb;
+        position: absolute;
+        transform: rotate(0deg);
+        left: 0;
+        top: -42px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+      }
+      &__content{
+        position: relative;
+        flex-direction: column;
+        .content-title{
+          width: auto;
+          font-weight: 800;
+          font-size: 15px;
+          line-height: 128.5%;
+        }
+        .content-desc{
+          width: auto;
+          font-size: 13px;
+          line-height: 128.5%;
+        }
+      }
+    }
   }
   .document{
     min-height: 322px;

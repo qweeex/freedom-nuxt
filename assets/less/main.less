@@ -517,8 +517,19 @@ body { overflow: -moz-scrollbars-none; }
           height: 100%;
           .slider-img{
             width: 60%;
+            position: relative;
             img{
               max-width: 100%;
+            }
+            .video-use{
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
           }
           .slider-content{
@@ -621,6 +632,30 @@ body { overflow: -moz-scrollbars-none; }
       flex: 1;
       padding-left: 18px;
       padding-top: 10px;
+      position: relative;
+      .full-reviews{
+        position: absolute;
+        font-weight: 300;
+        bottom: -22px;
+        cursor: pointer;
+        left: 19px;
+        &:hover{
+          &::after{
+            width: 100%;
+          }
+        }
+        &::after{
+          height: 3px;
+          width: 0;
+          transition: all 0.4s;
+          display: block;
+          content: '';
+          background: #000000;
+          position: absolute;
+          left: 0;
+          bottom: -4px;
+        }
+      }
     }
   }
 }

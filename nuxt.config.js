@@ -27,7 +27,8 @@ export default {
     {src: '~/assets/less/main.less', lang: 'less'},
     {src: '~/assets/less/media.less', lang: 'less'},
     {src: '~/assets/less/popupKeys.less', lang: 'less'},
-    {src: 'swiper/css/swiper.min.css'}
+    {src: 'swiper/css/swiper.min.css'},
+    {src: '~plugins/jquery.fancybox.min.css'}
 
   ],
 
@@ -36,7 +37,8 @@ export default {
     { src: '~plugins/jquery-3.5.1.min.js', ssr: false },
     { src: '~plugins/jquery.marquee.min.js', ssr: false },
     { src: '~plugins/anime.min.js', ssr: false },
-    { src: '~plugins/nuxt-swiper-plugin.js', ssr: false }
+    { src: '~plugins/nuxt-swiper-plugin.js', ssr: false },
+    { src: '~plugins/jquery.fancybox.min.js', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -63,7 +65,8 @@ export default {
         jquery: 'jquery',
         'window.jQuery': 'jquery',
         jQuery: 'jquery',
-        anime: 'anime'
+        anime: 'anime',
+        fancybox: 'fancybox'
       })
     ],
     loaders: {

@@ -49,11 +49,11 @@
             </a>
           </div>
           <div class="header-mobileMenu">
-            <img src="~/assets/img/menu.svg" :click="this.showMob = true" alt="">
+            <img src="~/assets/img/menu.svg" @click="this.showMob = true" alt="">
           </div>
         </div>
       </section>
-      <div class="header-mobile" :class="{ showMob: showMob === true }">
+      <div class="header-mobile" :class="{ showMob: showMob}">
         <div class="mobile-top">
           <div class="mobile-logo">
             <img src="~/assets/img/logo.svg" alt="">
@@ -112,7 +112,8 @@
       props: ['lang'],
       data() {
         return{
-          audioStatus: false
+          audioStatus: false,
+          showMob: false
         }
       },
       methods: {

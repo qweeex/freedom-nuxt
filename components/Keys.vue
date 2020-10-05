@@ -8,12 +8,17 @@
                         <div class="swiper-wrapper">
                             <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.MIGX_id">
                                 <div class="content-slide__wrapper">
-                                    <div class="slider-img"><img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" /></div>
+                                    <div class="slider-img">
+                                      <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" />
+                                      <div class="video-use" v-if="keyt.videoLink !== ''">
+                                        <img :data-fancybox="keyt.MIGX_id" :href="keyt.videoLink" src="~/assets/img/playVideo.svg" alt="">
+                                      </div>
+                                    </div>
                                     <div class="slider-content">
                                         <div class="content-title">
                                             <span>{{ keyt.title }}</span>
                                         </div>
-                                        <div class="content-link"><a @click="PopupShow(keyt.MIGX_id)">Читать подробнее</a></div>
+                                        <div class="content-link"><a @click="getKeys(keyt.MIGX_id)">Читать подробнее</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -27,7 +32,12 @@
                   <div class="swiper-wrapper">
                     <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.MIGX_id">
                       <div class="content-slide__wrapper">
-                        <div class="slider-img"><img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" /></div>
+                        <div class="slider-img">
+                          <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" />
+                          <div class="video-use" v-if="keyt.videoLink !== ''">
+                            <img :data-fancybox="keyt.MIGX_id" :href="keyt.videoLink"  src="~/assets/img/playVideo.svg" alt="">
+                          </div>
+                        </div>
                         <div class="slider-content">
                           <div class="content-title">
                             <span>{{ keyt.title }}</span>
@@ -56,33 +66,26 @@
                 <div class="PopupKeys-content">
                     <div class="PopupKeys-content__top">
                         <div class="top-title">
-                            <div class="top-title__title"><span>PR, SMM и event для сети винных баров Brix</span></div>
-                            <div class="top-title__desc"><span>Полное сопровождение проекта:</span></div>
+                            <div class="top-title__title">
+                              <span>{{ popupTitle }}</span></div>
+                            <div class="top-title__desc"><span>{{ popupResult }}</span></div>
                         </div>
-                        <div class="top-img"><img src="~/assets/img/popupImg.png" alt="" /></div>
+                        <div class="top-img">
+                          <img :src="popupImg" alt="" />
+                          <div class="video-use" v-if="popupVideo !== ''">
+                            <img src="~/assets/img/playVideo.svg" alt="">
+                          </div>
+                        </div>
                     </div>
                     <div class="PopupKeys-content__bottom">
                         <div class="bottom-list">
-                            <ul>
-                                <li>Создание пула релевантных СМИ.</li>
-                                <li>Создание информационных поводов.</li>
-                                <li>Организация временного двухнедельного моно-меню раз в 1,5 - 2 месяца.</li>
-                                <li>Организация и проведение регулярных ужинов с бренд-шефом сети.</li>
-                                <li>Фотоотчеты мероприятий.</li>
-                                <li>Написание пресс-релизов.</li>
-                                <li>Организация фотосессий сезонных и временных меню.</li>
-                                <li>Организация и проведение дегустаций с ресторанными критиками и журналистами.</li>
-                                <li>Ведение соц сетей (Facebook и Instagram).</li>
-                                <li>Обработка входящих запросов журналистов.</li>
-                            </ul>
+                            {{ popupContent }}
                         </div>
                         <div class="bottom-result">
                             <div class="result-title"><p class="result-title__text">Результат</p></div>
                             <div class="result-desc">
                                 <p>
-                                    Создание пула из 50 релевантных журналистов, организация 3 моно-меню, проведение 5 ужинов с
-                                    бренд-шефов, проведение 13 фотосессий, выход 11 пресс-релизов, обеспечение выхода 59 публикаций,
-                                    прирост в соц сетях (Facebook 5007 подписчиков, Instagram 6383 подписчиков)
+                                  {{ popupResult }}
                                 </p>
                             </div>
                         </div>
@@ -97,7 +100,6 @@
     import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
     import Logo from "@/components/Keys/Logo";
     import axios from 'axios';
-    import Keys from '@/static/keys.json';
 
     export default {
       name: "Keys",
@@ -144,7 +146,13 @@
             }
           }
         },
-        keysInfo: []
+        keysInfo: [],
+        // Popup
+        popupImg: null,
+        popupTitle: null,
+        popupContent: null,
+        popupResult: null,
+        popupVideo: null
       }),
       created(){
         if (process.browser){
@@ -152,10 +160,6 @@
         }
       },
       methods: {
-          PopupShow(el){
-            console.log(el);
-            this.showPopup = true;
-          },
           PopupHidden(){
               this.showPopup = false;
           },
@@ -166,6 +170,17 @@
           CheckDevice(){
             //return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
             return false
+          },
+          async getKeys(id){
+            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?id=' + id;
+            await axios.get(url, {
+                headers: {
+                  lang: 'ru'
+                }
+              })
+              .then((res) => {
+                console.log(res)
+              })
           }
       },
       async mounted() {
@@ -176,6 +191,7 @@
           }
         })
         this.keysInfo = data.data;
+        console.log(data.data)
         this.InitKeys();
       }
     }
