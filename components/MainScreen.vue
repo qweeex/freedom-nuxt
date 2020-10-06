@@ -68,7 +68,7 @@ export default {
           let MainLine = document.querySelector('.main-line__right').offsetLeft;
 
           let width = container - logo;
-          console.log((width / 2) - MainLine);
+          //console.log((width / 2) - MainLine);
           line.style.left = ((width / 2) + MainLine) + 'px';
           let widthLine = container - (((width / 2) + MainLine) + document.querySelector('.service-title').clientWidth);
           line.style.width = (widthLine - 10) + 'px';

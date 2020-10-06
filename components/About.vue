@@ -122,10 +122,10 @@ export default {
         }
 
         // Left line
-        anime({
+        /*anime({
           targets: Line,
           height: calcLine() + "%"
-        });
+        });*/
       });
     },
   },

@@ -56,7 +56,7 @@
       }
     },
     mounted() {
-      this.BlockAnimate();
+      //this.BlockAnimate();
     }
   }
 </script>

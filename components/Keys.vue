@@ -6,19 +6,19 @@
                 <div v-if="this.phone === false" :class="{ hiddenContent: showPopup }" class="keys-content keys-desktop">
                     <div v-swiper:KeysSwiper="swiperOptions" class="keys-content__slider swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.MIGX_id">
+                            <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.id">
                                 <div class="content-slide__wrapper">
                                     <div class="slider-img">
-                                      <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" />
-                                      <div class="video-use" v-if="keyt.videoLink !== ''">
-                                        <img :data-fancybox="keyt.MIGX_id" :href="keyt.videoLink" src="~/assets/img/playVideo.svg" alt="">
+                                      <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
+                                      <div class="video-use" v-if="keyt.gallary[0].video !== ''">
+                                        <img :data-fancybox="keyt.id" :href="keyt.gallary[0].video" src="~/assets/img/playVideo.svg" alt="">
                                       </div>
                                     </div>
                                     <div class="slider-content">
                                         <div class="content-title">
                                             <span>{{ keyt.title }}</span>
                                         </div>
-                                        <div class="content-link"><a @click="getKeys(keyt.MIGX_id)">Читать подробнее</a></div>
+                                        <div class="content-link"><a @click="getKeys(keyt.id)">Читать подробнее</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -30,19 +30,19 @@
               <div v-if="this.phone === true" :class="{ hiddenContent: showPopup }" class="keys-content keys-mobile">
                 <div v-swiper:KeysSwiper2="swiperMob" class="keys-content__slider swiper-container">
                   <div class="swiper-wrapper">
-                    <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.MIGX_id">
+                    <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.id">
                       <div class="content-slide__wrapper">
                         <div class="slider-img">
-                          <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.img" alt="" />
-                          <div class="video-use" v-if="keyt.videoLink !== ''">
-                            <img :data-fancybox="keyt.MIGX_id" :href="keyt.videoLink"  src="~/assets/img/playVideo.svg" alt="">
+                          <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
+                          <div class="video-use" v-if="keyt.gallary[0].video !== ''">
+                            <img :data-fancybox="keyt.id" :href="keyt.gallary[0].video" src="~/assets/img/playVideo.svg" alt="">
                           </div>
                         </div>
                         <div class="slider-content">
                           <div class="content-title">
                             <span>{{ keyt.title }}</span>
                           </div>
-                          <div class="content-link"><a @click="PopupShow()">Читать подробнее</a></div>
+                          <div class="content-link"><a @click="getKeys(keyt.id)">Читать подробнее</a></div>
                         </div>
                       </div>
                     </div>
@@ -68,25 +68,29 @@
                         <div class="top-title">
                             <div class="top-title__title">
                               <span>{{ popupTitle }}</span></div>
-                            <div class="top-title__desc"><span>{{ popupResult }}</span></div>
+                            <div class="top-title__desc"><span>{{ popupType }}</span></div>
                         </div>
                         <div class="top-img">
-                          <img :src="popupImg" alt="" />
-                          <div class="video-use" v-if="popupVideo !== ''">
-                            <img src="~/assets/img/playVideo.svg" alt="">
+                          <div v-swiper:popupSliders="popupSlider" class="keys-sli swiper-container">
+                            <div class="keys-wrapper swiper-wrapper">
+                              <div class="swiper-slide" v-for="photo in popupImg" :key="photo.id">
+                                <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + photo.image" alt="" />
+                                <div class="video-use" v-if="photo.video !== ''">
+                                  <img :data-fancybox="photo.MIGX_id" :href="photo.video" src="~/assets/img/playVideo.svg" alt="">
+                                </div>
+                              </div>
+                              <div class="swiper-button-prev"></div>
+                              <div class="swiper-button-next"></div>
+                            </div>
                           </div>
                         </div>
                     </div>
                     <div class="PopupKeys-content__bottom">
-                        <div class="bottom-list">
-                            {{ popupContent }}
-                        </div>
+                        <div class="bottom-list" v-html="popupContent"></div>
                         <div class="bottom-result">
                             <div class="result-title"><p class="result-title__text">Результат</p></div>
                             <div class="result-desc">
-                                <p>
-                                  {{ popupResult }}
-                                </p>
+                                <p v-html="popupResult"></p>
                             </div>
                         </div>
                     </div>
@@ -112,6 +116,14 @@
       data: () => ({
         showPopup: false,
         phone: false,
+        popupSlider:{
+          slidesPerView: 1,
+          effect: 'fade',
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        },
         swiperMob: {
           slidesPerView: 'auto',
           direction: 'horizontal',
@@ -148,11 +160,12 @@
         },
         keysInfo: [],
         // Popup
-        popupImg: null,
+        popupImg: [],
         popupTitle: null,
         popupContent: null,
         popupResult: null,
-        popupVideo: null
+        popupVideo: null,
+        popupType: null
       }),
       created(){
         if (process.browser){
@@ -179,19 +192,31 @@
                 }
               })
               .then((res) => {
-                console.log(res)
+                console.log(res.data.data[0])
+                this.popupImg = res.data.data[0].gallary;
+                this.popupTitle = res.data.data[0].title;
+                this.popupType = res.data.data[0].type;
+                this.popupResult = res.data.data[0].result;
+                this.popupContent = res.data.data[0].content;
               })
+              .finally(() => {
+                this.showPopup = true;
+                this.popupSliders.update();
+              })
+          },
+          async getKey(){
+            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys';
+            const { data } = await axios.get(url, {
+              headers: {
+                lang: 'ru'
+              }
+            })
+            this.keysInfo = data.data;
+            console.log(data.data)
           }
       },
-      async mounted() {
-        const url = 'http://freedom.sitecriy.beget.tech/api/getkeys';
-        const { data } = await axios.get(url, {
-          headers: {
-            lang: 'ru'
-          }
-        })
-        this.keysInfo = data.data;
-        console.log(data.data)
+       mounted() {
+        this.getKey();
         this.InitKeys();
       }
     }
