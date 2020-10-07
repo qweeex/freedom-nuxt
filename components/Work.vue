@@ -1,7 +1,11 @@
 <template>
   <div class="work">
-    <div class="work-title"><p class="work-title__text">Как мы работаем</p></div>
-    <div class="work-list">
+    <div class="work-title">
+      <p class="work-title__text" v-if="lang === 'ru'">Как мы работаем</p>
+      <p class="work-title__text" v-if="lang === 'en'">How We Work</p>
+      <p class="work-title__text" v-if="lang === 'port'">Como trabalhamos</p>
+    </div>
+    <div v-if="lang === 'ru'" class="work-list">
       <div class="work-wrapper">
         <div class="work-item item-1" data-id="1">
           <div class="work-item__img"><img src="~/assets/img/work/work-1.png" alt="" /></div>
@@ -74,12 +78,141 @@
         </div>
       </div>
     </div>
+    <div v-if="lang === 'en'" class="work-list">
+      <div class="work-wrapper">
+        <div class="work-item item-1" data-id="1">
+          <div class="work-item__img"><img src="~/assets/img/work/work-1.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Getting <br/>acquainted</span>
+            </div>
+            <div class="content-desc">
+              <span
+              >We receive a brief filled by you and later, we meet or organize a conference call. We study specifics of your company’s business and the goals you want to reach</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-2" data-id="2">
+          <div class="work-item__img"><img src="~/assets/img/work/work-2.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Strategy <br/>development</span>
+            </div>
+            <div class="content-desc">
+              <span
+              >It takes us up to 2 weeks to develop promotional strategy and make an offer with clear KPIs and schedule. We present our ideas at a personal meeting or online, we discuss details and make adjustments if necessary.</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-3" data-id="3">
+          <div class="work-item__img"><img src="~/assets/img/work/work-3.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Signing of <br>a contract</span>
+            </div>
+            <div class="content-desc">
+              <span
+              >All approved KPIs and schedules are mentioned in the contract and, having received prepayment, we begin our work.</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-4" data-id="4">
+          <div class="work-item__img"><img src="~/assets/img/work/work-4.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Strategy <br/>implementation</span>
+            </div>
+            <div class="content-desc">
+              <span
+              >The team of the agency works on a project, and the account manager is always in touch with you. The manager discusses and controls all current issues, conveys information from you to the team and vice versa, takes responsibility for performance of all obligations.</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-5" data-id="5">
+          <div class="work-item__img"><img src="~/assets/img/work/work-5.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Reporting</span>
+            </div>
+            <div class="content-desc">
+              <span>Every month, we send a detailed and clear report in which you see the results of our work.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="lang === 'port'" class="work-list">
+      <div class="work-wrapper">
+        <div class="work-item item-1" data-id="1">
+          <div class="work-item__img"><img src="~/assets/img/work/work-1.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Conhecimento</span>
+            </div>
+            <div class="content-desc">
+              <span>
+                Recebemos de você um brief preenchido e depois nos encontramos pessoalmente, ou organizamos um conference-call. Estudamos a específica da atividade da sua companhia e os objetivos que pretende alcançar.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-2" data-id="2">
+          <div class="work-item__img"><img src="~/assets/img/work/work-2.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Elaboração da <br/>estratégia</span>
+            </div>
+            <div class="content-desc">
+              <span>Dentro do prazo de até 2 semanas elaboramos a estratégia de promoção e fazemos a proposta com KPIs claros e prazos determinados. Realizamos a apresentação pessoalmente ou online, discutimos os detalhes e corrigimos o plano, caso for preciso.</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-3" data-id="3">
+          <div class="work-item__img"><img src="~/assets/img/work/work-3.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Assinatura <br>do contrato</span>
+            </div>
+            <div class="content-desc">
+              <span>Todos os KPIs confirmados e prazos dos trabalhos serão indicados no contrato e depois de receber o pré-pagamento começamos a trabalhar.</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-4" data-id="4">
+          <div class="work-item__img"><img src="~/assets/img/work/work-4.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Realização da <br/>estratégia</span>
+            </div>
+            <div class="content-desc">
+              <span>A equipe da agência trabalha no projeto e o account-manager sempre está em contato com você. Discute e controla todas as questões correntes, transmite as informações de você para a equipe e vice- versa e é responsável pelo cumprimento de todas as obrigações.</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-item item-5" data-id="5">
+          <div class="work-item__img"><img src="~/assets/img/work/work-5.png" alt="" /></div>
+          <div class="work-item__content">
+            <div class="content-title">
+              <span>Apresentação de <br/>relatórios</span>
+            </div>
+            <div class="content-desc">
+              <span>Cada mês enviamos o relatório detalhado e claro, onde verá os resultados do trabalho.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Work"
+  name: "Work",
+  props: ['lang']
 }
 </script>
 

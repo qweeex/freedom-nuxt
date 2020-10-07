@@ -114,27 +114,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-.main-content__img{
-  position: relative;
-  .main-line__left{
-    position: absolute;
-    top: 258px;
-    width: 15px;
-    background: #000000;
-    height: 0;
-    transition: all 0.6s;
-    left: 0;
-  }
-  .main-line__right{
-    position: absolute;
-    top: 258px;
-    width: 15px;
-    background: #000000;
-    height: 0;
-    transition: all 1s;
-    left: 80px;
-  }
-}
+
 #made-in-ny{
   height: 100vh;
   overflow: hidden;

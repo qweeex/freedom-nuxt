@@ -1,6 +1,6 @@
 <template>
-    <div class="callback">
-      <div class="callback-bg"></div>
+    <div class="callback" :class="{ callbackShow: $store.state.callback.show }" >
+      <div class="callback-bg" @click="$store.commit('callback/hiddenPopup')"></div>
       <div v-if="!success" class="callback-wrapper">
         <div class="callback-top">
           <div class="top-title">
@@ -54,9 +54,6 @@
         </div>
       </div>
       <div v-if="success" class="callback-success">
-        <div class="success-anim">
-          <lottie :options="defaultOptions" :height="250" :width="250" v-on:animCreated="handleAnimation" />
-        </div>
         <div class="success-title">
           <span>Ваша заявка отправлена!</span>
         </div>
@@ -66,15 +63,11 @@
 
 <script>
 
-import Lottie from 'vue-lottie/src/lottie.vue';
-import animationData from '@/static/success.json';
+
 
 export default {
   name: "Callback",
   props: ['lang'],
-  components: {
-    'lottie': Lottie
-  },
   data() {
     return{
       errors: [],
@@ -84,13 +77,7 @@ export default {
       position: null,
       email: null,
       phone: null,
-      success: false,
-      defaultOptions: {
-        animationData: animationData,
-        autoplay: false,
-        loop: false
-      },
-      anim: null
+      success: false
     }
   },
   methods: {
@@ -113,17 +100,17 @@ export default {
 
       e.preventDefault();
       this.success = true;
-      this.handleAnimation();
-    },
-    handleAnimation: function (anim){
-      console.log(anim);
-      anim.autoplay = true;
+
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+    .callbackShow{
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
     .callback{
       position: fixed;
       left: 0;
@@ -131,8 +118,11 @@ export default {
       width: 100%;
       height: 100%;
       z-index: 100;
-      display: none;
+      display: flex;
       align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.4s;
       justify-content: center;
       &-success{
         background: #fff;
@@ -244,6 +234,40 @@ export default {
         top: 0;
         width: 100%;
         height: 100%;
+      }
+    }
+    @media (max-width: 600px){
+      .callback{
+        max-width: 100%;
+        &-wrapper{
+          max-width: 95%;
+          .callback-top{
+            padding: 15px;
+            .top-title{
+              width: 70%;
+              span{
+                font-size: 20px;
+              }
+            }
+            .top-img{
+              width: 30%;
+              img{
+                max-width: 100%;
+              }
+            }
+          }
+          .callback-form{
+            padding: 0 15px 15px;
+            .form-input{
+              margin-bottom: 20px;
+            }
+            .form-policy{
+              &__text{
+                font-size: 15px;
+              }
+            }
+          }
+        }
       }
     }
 </style>

@@ -2,14 +2,30 @@
   <div>
     <section class="document">
       <div class="document-title">
-        <p class="document-title__text">ХОЧУ<br />ЗАПОЛНИТЬ БРИФ</p>
+        <p v-if="lang === 'ru'" class="document-title__text" @click="$store.commit('brief/showPopup')">
+          ХОЧУ<br />ЗАПОЛНИТЬ БРИФ
+        </p>
+        <p v-if="lang === 'en'" class="document-title__text" @click="$store.commit('brief/showPopup')">
+          I want <br>to fill a brief
+        </p>
+        <p v-if="lang === 'port'" class="document-title__text" @click="$store.commit('brief/showPopup')">
+          Quero <br>preencher o brief
+        </p>
       </div>
       <div class="document-img"><img src="~/assets/img/brif.svg" alt="" /></div>
     </section>
     <section class="phone">
       <div class="phone-img"><img src="~/assets/img/phone.svg" alt="" /></div>
       <div class="phone-title">
-        <p class="phone-title__text">ХОЧУ, чтобы<br />мне перезвонили</p>
+        <p v-if="lang === 'ru'" class="phone-title__text" @click="$store.commit('callback/showPopup')">
+          ХОЧУ, чтобы<br />мне перезвонили
+        </p>
+        <p v-if="lang === 'en'" class="phone-title__text" @click="$store.commit('callback/showPopup')">
+          Please <br>call me back
+        </p>
+        <p v-if="lang === 'port'" class="phone-title__text" @click="$store.commit('callback/showPopup')">
+          Quero <br>receber ligação
+        </p>
       </div>
     </section>
   </div>
@@ -18,11 +34,12 @@
 <script>
 export default {
   name: "HandsBlock",
+  props: ['lang'],
   methods: {
     HandsAnimate(){
       window.addEventListener('scroll', function(){
         let HandsOneTopOffset = document.querySelector('.document').getBoundingClientRect().top + document.body.scrollTop;
-        if (HandsOneTopOffset <= 50){
+        if (HandsOneTopOffset <= 100){
           document.querySelector('.document-img img').style.left = 0;
           document.querySelector('.phone-img img').style.left = 0;
         }

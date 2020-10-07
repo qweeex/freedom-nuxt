@@ -12,6 +12,7 @@
     <Work lang="port"/>
     <HandsBlock lang="port"/>
     <Contact lang="port"/>
+    <Brief lang="port" />
   </div>
 </template>
 
@@ -35,7 +36,8 @@ import Keys from '@/components/Keys';
 import Services from "~/components/Services";
 // О нас
 import About from "~/components/About";
-
+// Popup Brief
+import Brief from "@/components/Popup/Brief";
 
 
 export default {
@@ -49,7 +51,8 @@ export default {
     Reviews,
     Work,
     Services,
-    About
+    About,
+    Brief
   }
 }
 </script>

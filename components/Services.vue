@@ -259,22 +259,3 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-.service{
-  .marquee-line{
-    width: 100%;
-  }
-  &-container{
-    position: relative;
-  }
-  &-lines{
-    position: absolute;
-    top: 89px;
-    width: 0;
-    background: #000000;
-    height: 15px;
-    left: 29%;
-    transition: all 1s;
-  }
-}
-</style>

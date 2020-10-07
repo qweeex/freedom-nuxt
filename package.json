@@ -27,6 +27,7 @@
     "vue-lottie": "^0.2.1"
   },
   "devDependencies": {
+    "@nuxt/types": "^2.14.6",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "less": "^3.12.2",
     "less-loader": "^7.0.1",
