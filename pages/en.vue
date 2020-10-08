@@ -13,6 +13,7 @@
     <HandsBlock lang="en"/>
     <Contact lang="en"/>
     <Brief lang="en" />
+    <Callback lang="en" />
   </div>
 </template>
 
@@ -38,6 +39,8 @@ import Services from "~/components/Services";
 import About from "~/components/About";
 // Popup Brief
 import Brief from "@/components/Popup/Brief";
+// Popup Callback
+import Callback from "@/components/Popup/Callback";
 
 
 
@@ -53,7 +56,8 @@ export default {
     Work,
     Services,
     About,
-    Brief
+    Brief,
+    Callback
   }
 }
 </script>

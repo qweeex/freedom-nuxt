@@ -87,7 +87,7 @@ export default {
       const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?id=' + id;
       Axios.get(url, {
         headers: {
-          lang: 'ru'
+          lang: this.$props.lang
         }
       })
         .then((res) => {
@@ -105,7 +105,7 @@ export default {
     const url = 'http://freedom.sitecriy.beget.tech/api/getreviews';
     const { data } = await Axios.get(url, {
       headers: {
-        lang: 'ru'
+        lang: this.$props.lang
       }
     })
     console.log(data);

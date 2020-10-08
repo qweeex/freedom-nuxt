@@ -60,6 +60,10 @@
                 swiperOptions:{
                     direction: 'vertical',
                     slidesPerView: 7,
+                    autoplay: {
+                      delay: 2000
+                    },
+                    loop: true,
                     breakpoints: {
                         1300:{
                           direction: 'vertical',

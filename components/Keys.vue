@@ -18,7 +18,11 @@
                                         <div class="content-title">
                                             <span>{{ keyt.title }}</span>
                                         </div>
-                                        <div class="content-link"><a @click="getKeys(keyt.id)">Читать подробнее</a></div>
+                                        <div class="content-link">
+                                          <a @click="getKeys(keyt.id)" v-if="lang === 'ru'">Читать подробнее</a>
+                                          <a @click="getKeys(keyt.id)" v-if="lang === 'en'">Read more</a>
+                                          <a @click="getKeys(keyt.id)" v-if="lang === 'port'">Leia na íntegra</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +46,11 @@
                           <div class="content-title">
                             <span>{{ keyt.title }}</span>
                           </div>
-                          <div class="content-link"><a @click="getKeys(keyt.id)">Читать подробнее</a></div>
+                          <div class="content-link">
+                            <a @click="getKeys(keyt.id)" v-if="lang === 'ru'">Читать подробнее</a>
+                            <a @click="getKeys(keyt.id)" v-if="lang === 'en'">Read more</a>
+                            <a @click="getKeys(keyt.id)" v-if="lang === 'port'">Leia na íntegra</a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -61,7 +69,11 @@
         <div class="PopupKeys" :class="{ PopupKeysActive: showPopup }">
             <div class="PopupKeys-wrapper">
                 <div class="PopupKeys-close">
-                    <div class="PopupKeys-close__btn" @click="PopupHidden()"><span>Вернуться назад</span></div>
+                    <div class="PopupKeys-close__btn" @click="PopupHidden()">
+                      <span v-if="lang === 'ru'">Вернуться назад</span>
+                      <span v-if="lang === 'en'">Return back</span>
+                      <span v-if="lang === 'port'">Voltar atrás</span>
+                    </div>
                 </div>
                 <div class="PopupKeys-content">
                     <div class="PopupKeys-content__top">
@@ -76,7 +88,7 @@
                               <div class="swiper-slide" v-for="photo in popupImg" :key="photo.id">
                                 <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + photo.image" alt="" />
                                 <div class="video-use" v-if="photo.video !== ''">
-                                  <img :data-fancybox="photo.MIGX_id" :href="photo.video" src="~/assets/img/playVideo.svg" alt="">
+                                  <img :data-fancybox="photo.id" :href="photo.video" src="~/assets/img/playVideo.svg" alt="">
                                 </div>
                               </div>
                               <div class="swiper-button-prev"></div>
@@ -188,7 +200,7 @@
             const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?id=' + id;
             await axios.get(url, {
                 headers: {
-                  lang: 'ru'
+                  lang: this.$props.lang
                 }
               })
               .then((res) => {
@@ -208,7 +220,7 @@
             const url = 'http://freedom.sitecriy.beget.tech/api/getkeys';
             const { data } = await axios.get(url, {
               headers: {
-                lang: 'ru'
+                lang: this.$props.lang
               }
             })
             this.keysInfo = data.data;

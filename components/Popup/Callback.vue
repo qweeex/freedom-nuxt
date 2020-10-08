@@ -4,14 +4,16 @@
       <div v-if="!success" class="callback-wrapper">
         <div class="callback-top">
           <div class="top-title">
-            <span>Хочу, чтобы мне перезвонили</span>
+            <span v-if="lang === 'ru'">Хочу, чтобы мне перезвонили</span>
+            <span v-if="lang === 'en'">Please call me back</span>
+            <span v-if="lang === 'port'">Хочу, чтобы мне перезвонили</span>
           </div>
           <div class="top-img">
             <img src="~/assets/img/callback-popup.png" alt="">
           </div>
         </div>
         <div class="callback-form">
-          <form @submit="checkForm" method="post" action="#" class="form-wrapper">
+          <form v-if="lang === 'ru'" @submit="checkForm" method="post" action="#" class="form-wrapper">
             <div class="form-input">
               <label>
                 <input type="text" name="company" v-model="company" placeholder="Название организации*">
@@ -48,6 +50,86 @@
             <div class="form-policy">
               <p class="form-policy__text">
                 Нажав кнопку “Отправить” вы даете согласие на обработку Ваших <n-link to="/policy" no-prefetch>персональных данных</n-link>
+              </p>
+            </div>
+          </form>
+          <form v-if="lang === 'en'" @submit="checkForm" method="post" action="#" class="form-wrapper">
+            <div class="form-input">
+              <label>
+                <input type="text" name="company" v-model="company" placeholder="Name of your organization *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="site" v-model="site" placeholder="Website link">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="name" v-model="name" placeholder="Your full name *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="position" v-model="position" placeholder="Position *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="email" v-model="email" placeholder="Business e-mail *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="phone" v-model="phone" placeholder="Phone number *">
+              </label>
+            </div>
+            <div class="form-btn">
+              <button type="submit">Send</button>
+            </div>
+            <div class="form-policy">
+              <p class="form-policy__text">
+                By pressing the Send button, you agree to your <br>personal data processing
+              </p>
+            </div>
+          </form>
+          <form v-if="lang === 'port'" @submit="checkForm" method="post" action="#" class="form-wrapper">
+            <div class="form-input">
+              <label>
+                <input type="text" name="company" v-model="company" placeholder="Nome da companhia *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="site" v-model="site" placeholder="Link para o site ">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="name" v-model="name" placeholder="Seu nome e sobrenome *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="position" v-model="position" placeholder="Cargo *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="email" v-model="email" placeholder="E-mail *">
+              </label>
+            </div>
+            <div class="form-input">
+              <label>
+                <input type="text" name="phone" v-model="phone" placeholder="Número de telefone *">
+              </label>
+            </div>
+            <div class="form-btn">
+              <button type="submit">Enviar</button>
+            </div>
+            <div class="form-policy">
+              <p class="form-policy__text">
+                Apertando “Enviar”, você aceita processamento dos <br>seus dados pessoais
               </p>
             </div>
           </form>

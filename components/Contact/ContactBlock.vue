@@ -1,27 +1,6 @@
 <template>
   <div class="contact-img">
-
-    <div class="block">
-      <div class="block-wrapper">
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-        <div class="block-map"></div>
-      </div>
-    </div>
-
+    <img src="~assets/img/contact.png" alt="">
   </div>
 </template>
 

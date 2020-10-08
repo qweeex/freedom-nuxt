@@ -49,17 +49,17 @@
             </a>
           </div>
           <div class="header-mobileMenu">
-            <img src="~/assets/img/menu.svg" @click="this.showMob = true" alt="">
+            <img src="~/assets/img/menu.svg" @click="showMobiles()" alt="">
           </div>
         </div>
       </section>
-      <div class="header-mobile" :class="{ showMob: showMob}">
+      <div class="header-mobile" :class="{ showMob: showMobs}">
         <div class="mobile-top">
           <div class="mobile-logo">
             <img src="~/assets/img/logo.svg" alt="">
           </div>
           <div class="mobile-close" >
-            <img src="~/assets/img/close.svg" :click="this.showMob = false"  alt="">
+            <img src="~/assets/img/close.svg" @click="hiddenMobiles()"  alt="">
           </div>
         </div>
         <div class="mobile-middle">
@@ -113,7 +113,7 @@
       data() {
         return{
           audioStatus: false,
-          showMob: false
+          showMobs: false
         }
       },
       methods: {
@@ -126,10 +126,13 @@
           let audio = document.querySelector('#music');
           audio.pause();
           this.audioStatus = false;
+        },
+        showMobiles(){
+          this.showMobs = true;
+        },
+        hiddenMobiles(){
+          this.showMobs = false;
         }
-      },
-      destroyed: function() {
-        console.log('my-component destroyed');
       }
     }
 </script>

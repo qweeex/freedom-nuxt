@@ -4,7 +4,9 @@
     <div v-if="!success" class="callback-wrapper">
       <div class="callback-top">
         <div class="top-title">
-          <span>Хочу, чтобы мне перезвонили</span>
+          <span v-if="lang === 'ru'">Хочу заполнить бриф</span>
+          <span v-if="lang === 'en'">I want to fill a brief</span>
+          <span v-if="lang === 'port'">Quero preencher o brief </span>
         </div>
         <div class="top-img">
           <img src="~/assets/img/brief-popup.png" alt="">
@@ -44,12 +46,12 @@
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="Занимались ли вы продвижением бизнеса до этого?"></textarea>
+              <textarea name="phone" v-model="question1" placeholder="Занимались ли вы продвижением бизнеса до этого?"></textarea>
             </label>
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="Какие проблемы вы выделяете на данном этапе?"></textarea>
+              <textarea name="phone" v-model="question2"  placeholder="Какие проблемы вы выделяете на данном этапе?"></textarea>
             </label>
           </div>
           <div class="form-checkbox">
@@ -58,7 +60,7 @@
             </div>
             <div class="checkbox-list">
               <div class="checkbox-item">
-                <input type="checkbox" id="check1">
+                <input type="checkbox" id="check1" v-model="checkbox" value="разработка Pr-стратегии и длительное абонентское обслуживание">
                 <label for="check1">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -69,7 +71,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check2">
+                <input type="checkbox" id="check2" v-model="checkbox" value="мне необходим разовый проект">
                 <label for="check2">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -80,7 +82,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check3">
+                <input type="checkbox" id="check3" v-model="checkbox" value="работа со СМИ">
                 <label for="check3">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -91,7 +93,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check4">
+                <input type="checkbox" id="check4" v-model="checkbox" value="SMM">
                 <label for="check4">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -102,7 +104,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check5">
+                <input type="checkbox" id="check5" v-model="checkbox" value="организация мероприятия">
                 <label for="check5">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -113,7 +115,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check6">
+                <input type="checkbox" id="check6" v-model="checkbox" value="разработка дизайна">
                 <label for="check6">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -124,7 +126,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check7">
+                <input type="checkbox" id="check7" v-model="checkbox" value="создание фото или видео контента">
                 <label for="check7">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -138,12 +140,12 @@
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="Ваш комментарий, если необходимой услуги нет в списке"></textarea>
+              <textarea name="phone" v-model="question3"  placeholder="Ваш комментарий, если необходимой услуги нет в списке"></textarea>
             </label>
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="Общие комментарии и пожелания"></textarea>
+              <textarea name="phone" v-model="question4"  placeholder="Общие комментарии и пожелания"></textarea>
             </label>
           </div>
           <div class="form-btn">
@@ -188,12 +190,12 @@
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="Did you promote your business before?"></textarea>
+              <textarea name="phone" v-model="question1"  placeholder="Did you promote your business before?"></textarea>
             </label>
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="What challenges do you face at this stage?"></textarea>
+              <textarea name="phone" v-model="question2"  placeholder="What challenges do you face at this stage?"></textarea>
             </label>
           </div>
           <div class="form-checkbox">
@@ -202,7 +204,7 @@
             </div>
             <div class="checkbox-list">
               <div class="checkbox-item">
-                <input type="checkbox" id="check1">
+                <input type="checkbox" id="check1" v-model="checkbox" value="PR strategy development and long-term services">
                 <label for="check1">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -213,7 +215,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check2">
+                <input type="checkbox" id="check2" v-model="checkbox" value="I want a one-time project">
                 <label for="check2">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -224,7 +226,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check3">
+                <input type="checkbox" id="check3" v-model="checkbox" value="Media communications">
                 <label for="check3">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -235,7 +237,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check4">
+                <input type="checkbox" id="check4" v-model="checkbox" value="SMM">
                 <label for="check4">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -246,7 +248,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check5">
+                <input type="checkbox" id="check5" v-model="checkbox" value="Event organization">
                 <label for="check5">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -257,7 +259,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check6">
+                <input type="checkbox" id="check6" v-model="checkbox" value="Design works">
                 <label for="check6">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -268,7 +270,7 @@
                 </label>
               </div>
               <div class="checkbox-item">
-                <input type="checkbox" id="check7">
+                <input type="checkbox" id="check7" v-model="checkbox" value="Photo or video content">
                 <label for="check7">
                   <span class="checkbox-item__check">
                     <span></span>
@@ -282,12 +284,12 @@
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="If you haven’t found what you are looking for in the list, please name it here:"></textarea>
+              <textarea name="phone" v-model="question3"  placeholder="If you haven’t found what you are looking for in the list, please name it here:"></textarea>
             </label>
           </div>
           <div class="form-textarea">
             <label>
-              <textarea name="phone"  placeholder="General comments and wishes"></textarea>
+              <textarea name="phone" v-model="question4"  placeholder="General comments and wishes"></textarea>
             </label>
           </div>
           <div class="form-btn">
@@ -296,6 +298,150 @@
           <div class="form-policy">
             <p class="form-policy__text">
               By pressing the Send button, you agree to your <br>personal data processing
+            </p>
+          </div>
+        </form>
+        <form v-if="lang === 'port'" @submit="checkForm" method="post" action="#" class="form-wrapper">
+          <div class="form-input">
+            <label>
+              <input type="text" name="company" v-model="company" placeholder="Nome da companhia *">
+            </label>
+          </div>
+          <div class="form-input">
+            <label>
+              <input type="text" name="site" v-model="site" placeholder="Link para o site">
+            </label>
+          </div>
+          <div class="form-input">
+            <label>
+              <input type="text" name="name" v-model="name" placeholder="Seu nome e sobrenome *">
+            </label>
+          </div>
+          <div class="form-input">
+            <label>
+              <input type="text" name="position" v-model="position" placeholder="Cargo *">
+            </label>
+          </div>
+          <div class="form-input">
+            <label>
+              <input type="text" name="email" v-model="email" placeholder="E-mail *">
+            </label>
+          </div>
+          <div class="form-input">
+            <label>
+              <input type="text" name="phone" v-model="phone" placeholder="Número de telefone *">
+            </label>
+          </div>
+          <div class="form-textarea">
+            <label>
+              <textarea name="phone" v-model="question1"  placeholder="Você tem experiência em promoção do negócio?"></textarea>
+            </label>
+          </div>
+          <div class="form-textarea">
+            <label>
+              <textarea name="phone" v-model="question2"  placeholder="Que problemas pode destacar nessa etapa?"></textarea>
+            </label>
+          </div>
+          <div class="form-checkbox">
+            <div class="checkbox-title">
+              <span>Em que serviços está interessado?</span>
+            </div>
+            <div class="checkbox-list">
+              <div class="checkbox-item">
+                <input type="checkbox" id="check1" v-model="checkbox" value="Elaboração da estratégia PR  e acompanhamento duradouro.">
+                <label for="check1">
+                  <span class="checkbox-item__check">
+                    <span></span>
+                  </span>
+                  <span class="checkbox-item__name">
+                    <span>Elaboração da estratégia PR  e acompanhamento duradouro. </span>
+                  </span>
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="check2" v-model="checkbox" value="Preciso de um projeto de uma vez só ">
+                <label for="check2">
+                  <span class="checkbox-item__check">
+                    <span></span>
+                  </span>
+                  <span class="checkbox-item__name">
+                    <span>Preciso de um projeto de uma vez só </span>
+                  </span>
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="check3" v-model="checkbox" value="Trabalho com mídia">
+                <label for="check3">
+                  <span class="checkbox-item__check">
+                    <span></span>
+                  </span>
+                  <span class="checkbox-item__name">
+                    <span>Trabalho com mídia</span>
+                  </span>
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="check4" v-model="checkbox" value="SMM">
+                <label for="check4">
+                  <span class="checkbox-item__check">
+                    <span></span>
+                  </span>
+                  <span class="checkbox-item__name">
+                    <span>SMM</span>
+                  </span>
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="check5" v-model="checkbox" value="Organização de eventos">
+                <label for="check5">
+                  <span class="checkbox-item__check">
+                    <span></span>
+                  </span>
+                  <span class="checkbox-item__name">
+                    <span>Organização de eventos </span>
+                  </span>
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="check6" v-model="checkbox" value="Elaboração de design">
+                <label for="check6">
+                  <span class="checkbox-item__check">
+                    <span></span>
+                  </span>
+                  <span class="checkbox-item__name">
+                    <span>Elaboração de design</span>
+                  </span>
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="check7" v-model="checkbox" value="Criação de conteúdo foto e vídeo">
+                <label for="check7">
+                  <span class="checkbox-item__check">
+                    <span></span>
+                  </span>
+                  <span class="checkbox-item__name">
+                    <span>Criação de conteúdo foto e vídeo </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-textarea">
+            <label>
+              <textarea name="phone" v-model="question3" placeholder="Comente aqui caso o seu serviço não esteja na lista:"></textarea>
+            </label>
+          </div>
+          <div class="form-textarea">
+            <label>
+              <textarea name="phone" v-model="question4" placeholder="Comentários e observações gerais "></textarea>
+            </label>
+          </div>
+          <div class="form-btn">
+            <button type="submit">Enviar</button>
+          </div>
+          <div class="form-policy">
+            <p class="form-policy__text">
+              Apertando “Enviar”, você aceita processamento dos <br>seus dados pessoais
             </p>
           </div>
         </form>
@@ -311,7 +457,7 @@
 
 <script>
 
-
+import Axios from 'axios';
 
 export default {
   name: "Brief",
@@ -325,6 +471,11 @@ export default {
       position: null,
       email: null,
       phone: null,
+      checkbox: [],
+      question1: null,
+      question2: null,
+      question3: null,
+      question4: null,
       success: false
     }
   },
@@ -346,8 +497,32 @@ export default {
         this.errors.push('Name is empty')
       }
 
+      const data = {
+        company: this.company,
+        name: this.name,
+        position: this.position,
+        email: this.email,
+        phone: this.phone,
+        question1: this.question1,
+        question2: this.question2,
+        question3: this.question3,
+        question4: this.question4,
+        checkbox: this.checkbox
+      };
+
+      Axios({
+        method: 'post',
+        url: 'http://freedom.sitecriy.beget.tech/api/message',
+        data: data,
+        headers: {'Content-Type': 'multipart/form-data' }
+      })
+      .then((res) => {
+        console.log(res)
+      })
+
+
       e.preventDefault();
-      this.success = true;
+      //this.success = true;
 
     }
   }
