@@ -137,7 +137,9 @@
       </div>
       <div v-if="success" class="callback-success">
         <div class="success-title">
-          <span>Ваша заявка отправлена!</span>
+          <span v-if="lang === 'ru'">Ваша заявка отправлена!</span>
+          <span v-if="lang === 'en'">Your application has been sent!</span>
+          <span v-if="lang === 'port'">Sua inscrição foi enviada!</span>
         </div>
       </div>
     </div>
@@ -164,6 +166,14 @@ export default {
   },
   methods: {
     checkForm: function (e) {
+
+      this.success = true;
+
+      setTimeout(() => {
+        this.$store.commit('callback/hiddenPopup');
+        this.success = false;
+      }, 1500);
+      return;
       if (!this.company){
         this.errors.push('Company is empty')
       }
@@ -215,7 +225,6 @@ export default {
         padding-top: 50px;
         padding-bottom: 50px;
         .success-title{
-          padding-top: 25px;
           text-align: center;
           span{
             font-weight: 800;
@@ -318,9 +327,19 @@ export default {
         height: 100%;
       }
     }
+    @media (min-width: 1330px) and (max-width: 1470px) {
+      .callback{
+        &-wrapper{
+          zoom: .8;
+        }
+      }
+    }
     @media (max-width: 600px){
       .callback{
         max-width: 100%;
+        &-success{
+          width: 90%;
+        }
         &-wrapper{
           max-width: 95%;
           .callback-top{
@@ -342,6 +361,9 @@ export default {
             padding: 0 15px 15px;
             .form-input{
               margin-bottom: 20px;
+              input{
+                width: calc(100% - 20px);
+              }
             }
             .form-policy{
               &__text{

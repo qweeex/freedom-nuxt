@@ -30,25 +30,25 @@
               <p class="form-desc__text" v-if="lang === 'port'">preencha o formulário e entraremos em contato </p>
             </div>
             <div class="form-wrapper" v-if="lang === 'ru'">
-              <div class="form-input"><input name="" placeholder="имя" /></div>
-              <div class="form-input"><input name="" placeholder="телефон" /></div>
-              <div class="form-input"><input name="" placeholder="e-mail" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="имя" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="телефон" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="e-mail" /></div>
               <div class="form-submit">
                 <button>Отправить</button>
               </div>
             </div>
             <div class="form-wrapper" v-if="lang === 'en'">
-              <div class="form-input"><input name="" placeholder="name" /></div>
-              <div class="form-input"><input name="" placeholder="phone" /></div>
-              <div class="form-input"><input name="" placeholder="e-mail" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="name" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="phone" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="e-mail" /></div>
               <div class="form-submit">
                 <button>Send</button>
               </div>
             </div>
             <div class="form-wrapper" v-if="lang === 'port'">
-              <div class="form-input"><input name="" placeholder="nome" /></div>
-              <div class="form-input"><input name="" placeholder="telefone" /></div>
-              <div class="form-input"><input name="" placeholder="e-mail" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="nome" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="telefone" /></div>
+              <div class="form-input"><input name="" type="text" placeholder="e-mail" /></div>
               <div class="form-submit">
                 <button>Enviar</button>
               </div>
