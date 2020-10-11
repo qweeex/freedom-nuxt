@@ -24,7 +24,8 @@
     "swiper": "^5.4.5",
     "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1",
-    "vue-lottie": "^0.2.1"
+    "vue-lottie": "^0.2.1",
+    "vue-marquee-text-component": "^1.2.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",

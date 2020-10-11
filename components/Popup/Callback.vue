@@ -3,6 +3,9 @@
       <div class="callback-bg" @click="$store.commit('callback/hiddenPopup')"></div>
       <div v-if="!success" class="callback-wrapper">
         <div class="callback-top">
+          <div class="top-close">
+            <img src="~/assets/img/close.svg" @click="$store.commit('callback/hiddenPopup')"  alt="">
+          </div>
           <div class="top-title">
             <span v-if="lang === 'ru'">Хочу, чтобы мне перезвонили</span>
             <span v-if="lang === 'en'">Please call me back</span>
@@ -246,6 +249,15 @@ export default {
           justify-content: space-between;
           align-items: center;
           padding: 20px 58px;
+          flex-flow: row wrap;
+          .top-close{
+            width: 100%;
+            text-align: right;
+            padding-bottom: 20px;
+            img{
+              cursor: pointer;
+            }
+          }
           .top-title{
             span{
               font-weight: 800;

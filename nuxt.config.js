@@ -6,7 +6,7 @@ export default {
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-
+  ssr: false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Freedom PR Agency',
@@ -34,11 +34,11 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~plugins/jquery-3.5.1.min.js', ssr: false },
-    { src: '~plugins/jquery.marquee.min.js', ssr: false },
-    { src: '~plugins/anime.min.js', ssr: false },
-    { src: '~plugins/nuxt-swiper-plugin.js', ssr: false },
-    { src: '~plugins/jquery.fancybox.min.js', ssr: false }
+    { src: '~plugins/jquery-3.5.1.min.js'},
+    { src: '~plugins/jquery.marquee.min.js'},
+    { src: '~plugins/anime.min.js'},
+    { src: '~plugins/nuxt-swiper-plugin.js'},
+    { src: '~plugins/jquery.fancybox.min.js'}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -66,7 +66,8 @@ export default {
         'window.jQuery': 'jquery',
         jQuery: 'jquery',
         anime: 'anime',
-        fancybox: 'fancybox'
+        fancybox: 'fancybox',
+        marquee: 'marquee'
       })
     ],
     loaders: {

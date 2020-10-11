@@ -35,9 +35,9 @@
           </div>
           <div class="header-lang">
             <div class="header-lang__list">
-              <nuxt-link to="/" class="header-lang__link">Ru</nuxt-link>
-              <nuxt-link to="/en" class="header-lang__link">En</nuxt-link>
-              <nuxt-link to="/port" class="header-lang__link">Port</nuxt-link>
+              <nuxt-link :class="{langActive: lang === 'ru'}" to="/" class="header-lang__link">Ru</nuxt-link>
+              <nuxt-link :class="{langActive: lang === 'en'}" to="/en" class="header-lang__link">En</nuxt-link>
+              <nuxt-link :class="{langActive: lang === 'port'}" to="/port" class="header-lang__link">Port</nuxt-link>
             </div>
           </div>
           <div class="header-site">
@@ -96,9 +96,9 @@
           </div>
           <div class="middle-lang">
             <div class="middle-lang__list">
-              <nuxt-link to="/" class="middle-lang__link">Ru</nuxt-link>
-              <nuxt-link to="/en" class="middle-lang__link">En</nuxt-link>
-              <nuxt-link to="/port" class="middle-lang__link">Port</nuxt-link>
+              <nuxt-link :class="{langActive: lang === 'ru'}" to="/" class="middle-lang__link">Ru</nuxt-link>
+              <nuxt-link :class="{langActive: lang === 'en'}" to="/en" class="middle-lang__link">En</nuxt-link>
+              <nuxt-link :class="{langActive: lang === 'port'}" to="/port" class="middle-lang__link">Port</nuxt-link>
             </div>
           </div>
         </div>
@@ -137,7 +137,8 @@
     }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+
     .header-container{
         position: relative;
     }

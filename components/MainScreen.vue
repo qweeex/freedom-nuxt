@@ -31,10 +31,10 @@ export default {
         let service = document.querySelector('.service');
 
         let calcRight = () => {
-          return second.offsetTop + first.offsetTop + 16;
+          return second.offsetTop + first.offsetTop + 40;
         }
         let calcLeft = () => {
-          return service.clientHeight + first.offsetTop + 62;
+          return service.clientHeight + first.offsetTop + 100;
         }
 
         LineLeft.style.height = calcLeft() + 'px';

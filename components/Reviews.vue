@@ -33,6 +33,9 @@
       <div class="popup-bg" @click="PopupShow = false"></div>
       <div class="popup-wrapper">
         <div class="wrap-top">
+          <div class="top-close">
+            <img src="~/assets/img/close.svg" @click="PopupShow = false"  alt="">
+          </div>
           <div class="top-img">
             <img :src="PopupImg" alt="">
           </div>
@@ -156,6 +159,14 @@ export default {
       display: flex;
       padding: 15px 30px;
       align-items: center;
+      flex-flow: row wrap;
+      .top-close{
+        width: 100%;
+        text-align: right;
+        img{
+          cursor: pointer;
+        }
+      }
       .top-img{
         flex-basis: 90px;
       }
