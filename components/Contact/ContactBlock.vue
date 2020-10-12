@@ -1,6 +1,103 @@
 <template>
   <div class="contact-img">
-    <img src="~assets/img/contact.png" alt="">
+    <div class="contact-square">
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block1.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block2.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block3.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block4.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block5.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block6.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block7.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block8.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block9.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block10.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block11.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block12.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block13.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block14.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block15.png" alt=""></div>
+      </div>
+      <div class="block-element">
+        <div class="elem-smile">
+          <img src="~assets/img/smile.png" alt="">
+        </div>
+        <div class="elem-main"><img src="~assets/img/block/block16.png" alt=""></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,20 +106,18 @@
     name: "ContactBlock",
     methods: {
       BlockAnimate(){
-        let blocks = document.querySelectorAll('.block-map');
+        let blocks = document.querySelectorAll('.block-element');
         blocks.forEach(element => {
-          /*element.addEventListener('mouseover', () => {
-            //element.classList.add('block-active');
-            setInterval(() => {
+          element.addEventListener('mouseover', () => {
+            /*for (let i = 0; i < 10; i++){
               this.TransformBox(element, this.randomInteger(-5,5), this.randomInteger(-5, 5));
-            }, 90);
-          });
+              //console.log(i)
+            }*/
+            element.classList.add('show-smile');
+          })
           element.addEventListener('mouseout', () => {
-            element.classList.remove('block-active');
-          })*/
-          setInterval(() => {
-            this.TransformBox(element, this.randomInteger(-15,15), this.randomInteger(-15, 15));
-          }, 90);
+            element.classList.remove('show-smile');
+          })
         })
       },
       randomInteger(min, max) {
@@ -35,37 +130,11 @@
       }
     },
     mounted() {
-      //this.BlockAnimate();
+      this.BlockAnimate();
     }
   }
 </script>
 
 <style scoped lang="less">
-  .block{
-    width: 600px;
-    &-wrapper{
-       display: grid;
-       grid-template-columns: 1fr 1fr 1fr 1fr;
-       grid-template-rows: 1fr 1fr 1fr 1fr;
-       grid-gap: 30px;
-     }
-    &-map{
-       width: 116px;
-       height: 116px;
-       background: #1A51A4;
-       display: block;
-       margin-left: auto;
-       margin-right: auto;
-       transform: skew(0, 0);
-       transition: all 0.5s;
 
-    }
-    &-active{
-       background: transparent !important;
-       transform: skew(0, 0);
-      &::before{
-         opacity: 1;
-       }
-    }
-  }
 </style>

@@ -7,7 +7,7 @@
     </div>
     <div v-if="lang === 'ru'" class="work-list">
       <div class="work-wrapper">
-        <div class="work-item item-1" data-id="1">
+        <div class="work-stop work-item item-1" data-id="1">
           <div class="work-item__img"><img src="~/assets/img/work/work-1.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-2" data-id="2">
+        <div class="work-stop work-item item-2" data-id="2">
           <div class="work-item__img"><img src="~/assets/img/work/work-2.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -36,7 +36,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-3" data-id="3">
+        <div class="work-stop work-item item-3" data-id="3">
           <div class="work-item__img"><img src="~/assets/img/work/work-3.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -50,7 +50,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-4" data-id="4">
+        <div class="work-stop work-item item-4" data-id="4">
           <div class="work-item__img"><img src="~/assets/img/work/work-4.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -65,7 +65,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-5" data-id="5">
+        <div class="work-stop work-item item-5" data-id="5">
           <div class="work-item__img"><img src="~/assets/img/work/work-5.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -80,7 +80,7 @@
     </div>
     <div v-if="lang === 'en'" class="work-list">
       <div class="work-wrapper">
-        <div class="work-item item-1" data-id="1">
+        <div class="work-stop work-item item-1" data-id="1">
           <div class="work-item__img"><img src="~/assets/img/work/work-1.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -93,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-2" data-id="2">
+        <div class="work-stop work-item item-2" data-id="2">
           <div class="work-item__img"><img src="~/assets/img/work/work-2.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -106,7 +106,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-3" data-id="3">
+        <div class="work-stop work-item item-3" data-id="3">
           <div class="work-item__img"><img src="~/assets/img/work/work-3.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -119,7 +119,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-4" data-id="4">
+        <div class="work-stop work-item item-4" data-id="4">
           <div class="work-item__img"><img src="~/assets/img/work/work-4.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -132,7 +132,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-5" data-id="5">
+        <div class="work-stop work-item item-5" data-id="5">
           <div class="work-item__img"><img src="~/assets/img/work/work-5.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -147,7 +147,7 @@
     </div>
     <div v-if="lang === 'port'" class="work-list">
       <div class="work-wrapper">
-        <div class="work-item item-1" data-id="1">
+        <div class="work-stop work-item item-1" data-id="1">
           <div class="work-item__img"><img src="~/assets/img/work/work-1.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -160,7 +160,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-2" data-id="2">
+        <div class="work-stop work-item item-2" data-id="2">
           <div class="work-item__img"><img src="~/assets/img/work/work-2.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -171,7 +171,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-3" data-id="3">
+        <div class="work-stop work-item item-3" data-id="3">
           <div class="work-item__img"><img src="~/assets/img/work/work-3.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -182,7 +182,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-4" data-id="4">
+        <div class="work-stop work-item item-4" data-id="4">
           <div class="work-item__img"><img src="~/assets/img/work/work-4.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -193,7 +193,7 @@
             </div>
           </div>
         </div>
-        <div class="work-item item-5" data-id="5">
+        <div class="work-stop work-item item-5" data-id="5">
           <div class="work-item__img"><img src="~/assets/img/work/work-5.png" alt="" /></div>
           <div class="work-item__content">
             <div class="content-title">
@@ -212,7 +212,24 @@
 <script>
 export default {
   name: "Work",
-  props: ['lang']
+  props: ['lang'],
+  methods:{
+    WorkAnimate(){
+      window.addEventListener('scroll', function(){
+        let HandsOneTopOffset = document.querySelector('.work').getBoundingClientRect().top + document.body.scrollTop;
+        if (HandsOneTopOffset <= 100){
+          document.querySelector('.item-5').classList.remove('work-stop');
+          document.querySelector('.item-4').classList.remove('work-stop');
+          document.querySelector('.item-3').classList.remove('work-stop');
+          document.querySelector('.item-2').classList.remove('work-stop');
+          document.querySelector('.item-1').classList.remove('work-stop');
+        }
+      })
+    }
+  },
+  mounted() {
+    this.WorkAnimate();
+  }
 }
 </script>
 

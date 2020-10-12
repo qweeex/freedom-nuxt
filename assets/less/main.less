@@ -158,7 +158,6 @@ body { overflow: -moz-scrollbars-none; }
       height: 0;
       transition: all 0.6s;
       left: 11px;
-      display: none;
     }
     .main-line__right{
       position: absolute;
@@ -168,7 +167,6 @@ body { overflow: -moz-scrollbars-none; }
       height: 0;
       transition: all 1s;
       left: 91px;
-      display: none;
     }
   }
   &-content{
@@ -740,6 +738,11 @@ body { overflow: -moz-scrollbars-none; }
   background: url("~assets/img/work-bg.jpg") center center;
   padding-bottom: 133px;
   margin-top: 50px;
+  .work-stop{
+    margin-top: -78px !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
   &-title{
     text-align: center;
     padding-top: 91px;
@@ -758,6 +761,7 @@ body { overflow: -moz-scrollbars-none; }
   }
   &-item{
     position: relative;
+    transition: all 0.4s;
     &:before{
       content: attr(data-id);
       font-weight: 500;
@@ -1074,6 +1078,32 @@ body { overflow: -moz-scrollbars-none; }
     display: flex;
     justify-content: flex-end;
     padding-top: 45px;
+    .show-smile{
+      .elem-main{
+        visibility: hidden;
+      }
+      .elem-smile{
+        opacity: 1 !important;
+      }
+    }
+    .contact-square{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 116px 116px 116px 116px;
+      grid-gap: 27px;
+      .block-element{
+        position: relative;
+        .elem-smile{
+          opacity: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
   }
   &-privat{
     margin-top: 94px;
