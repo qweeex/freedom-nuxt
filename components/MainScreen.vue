@@ -2,16 +2,16 @@
   <div>
       <section class="main">
         <div id="made-in-ny"></div>
-        <div class="main-line video-elem hide-elem"><img src="~/assets/img/scroll-line.svg" alt="" /></div>
-        <div class="main-content video-elem hide-elem">
+        <div class="main-line video-elem"><img src="~/assets/img/scroll-line.svg" alt="" /></div>
+        <div class="main-content video-elem">
           <div class="main-content__img">
-            <img src="~/assets/img/master.png" alt="">
+            <img src="~/assets/img/master.svg" alt="">
 
             <div class="main-line__left"></div>
             <div class="main-line__right"></div>
           </div>
         </div>
-        <div class="main-bottom video-elem hide-elem"></div>
+        <div class="main-bottom video-elem "></div>
       </section>
   </div>
 </template>
@@ -22,31 +22,33 @@ export default {
   methods: {
     MainAnimate(){
 
-      let LineLeft = document.querySelector('.main-line__left');
-      let LineRight = document.querySelector('.main-line__right');
-
       window.addEventListener('scroll', function () {
-        let second = document.querySelector('.service-lines');
-        let first = document.querySelector('.main-content__img');
+        let LineLeft = document.querySelector('.main-line__left');
+        let LineRight = document.querySelector('.main-line__right');
+        let img = document.querySelector('.main-content__img > img');
         let service = document.querySelector('.service');
-
-        let calcRight = () => {
-          return second.offsetTop + first.offsetTop + 40;
+        // Считаем отступ под картинкой
+        const offsetImg = () => {
+          // Картинка с отступом свернну
+          let picHeight = document.querySelector('.main-content__img').offsetTop + img.height;
+          let mainHeight = document.querySelector('.main').clientHeight;
+          return mainHeight - picHeight;
         }
-        let calcLeft = () => {
-          return service.clientHeight + first.offsetTop + 100;
-        }
+        // Left line
+        LineLeft.style.top = (img.height - 4) + 'px';
+        LineLeft.style.height =  (service.clientHeight + offsetImg() + 60) + 'px';
 
-        LineLeft.style.height = calcLeft() + 'px';
-        LineRight.style.height = calcRight() + 'px';
+        // Right line
+        let lineService = document.querySelector('.service-lines');
 
-        // Service line
+        LineRight.style.top = (img.height - 4) + 'px';
+        LineRight.style.height = (lineService.offsetTop + offsetImg() + 4) + 'px';
+
         setTimeout(() => {
           let line = document.querySelector('.service-lines');
           let container = document.querySelector('.service-container').clientWidth;
           let logo = document.querySelector('.main-content__img').clientWidth;
           let MainLine = document.querySelector('.main-line__right').offsetLeft;
-
           let width = container - logo;
           //console.log((width / 2) - MainLine);
           line.style.left = ((width / 2) + MainLine) + 'px';
@@ -55,40 +57,10 @@ export default {
         }, 1000)
       });
 
-
-    },
-    VimeoVideo(){
-      /*let player = new Player('made-in-ny', {
-        id: 461358249,
-        width: window.innerWidth,
-        byline: false,
-        controls: false,
-        autoplay: true,
-        title: false
-      });
-
-
-      player.play()
-          .then(function() {
-            console.log('Play')
-          });
-
-      player.on('ended', function(data) {
-        console.log('end');
-        document.querySelector('#made-in-ny').style.opacity = 0;
-        document.querySelectorAll('.video-elem').forEach(function (item){
-          item.classList.remove('hide-elem');
-        })
-      });*/
-      document.querySelector('#made-in-ny').style.opacity = 0;
-      document.querySelectorAll('.video-elem').forEach(function (item){
-        item.classList.remove('hide-elem');
-      })
-    },
+    }
   },
   mounted() {
     this.MainAnimate();
-    this.VimeoVideo();
   }
 }
 </script>

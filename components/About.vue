@@ -108,25 +108,15 @@ export default {
   props: ['lang'],
   methods: {
     AboutAnimate(){
+      window.addEventListener('scroll', function(){
+        let HandsOneTopOffset = document.querySelector('.about').getBoundingClientRect().top + document.body.scrollTop;
+        let aboutLine = document.querySelector('.about-start__line');
+        let heightLine = document.querySelector('.cf').clientHeight;
 
-      let Line = document.querySelector('.about-start__line');
-
-      window.addEventListener('scroll', function () {
-        let pageY = window.pageYOffset;
-        let mainHeight = document.querySelector('.cf').offsetHeight;
-        function offset(el) {
-          var rect = el.getBoundingClientRect(),
-              scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-              scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+        if (HandsOneTopOffset <= 100){
+            aboutLine.style.height = (heightLine + 60) + 'px';
         }
-
-        // Left line
-        /*anime({
-          targets: Line,
-          height: calcLine() + "%"
-        });*/
-      });
+      })
     },
   },
   mounted() {
@@ -144,7 +134,9 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
-    width: 15.5px;
+    height: 0;
+    transition: all 1s;
+    width: 15.6px;
     background: #171717;
     display: block;
     content: '';

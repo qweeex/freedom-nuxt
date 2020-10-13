@@ -14,6 +14,7 @@
     <Contact lang="en"/>
     <Brief lang="en" />
     <Callback lang="en" />
+    <Cookie lang="en"/>
   </div>
 </template>
 
@@ -41,7 +42,8 @@ import About from "~/components/About";
 import Brief from "@/components/Popup/Brief";
 // Popup Callback
 import Callback from "@/components/Popup/Callback";
-
+// Cookie
+import Cookie from "@/components/Cookie";
 
 
 export default {
@@ -57,7 +59,8 @@ export default {
     Services,
     About,
     Brief,
-    Callback
+    Callback,
+    Cookie
   }
 }
 </script>

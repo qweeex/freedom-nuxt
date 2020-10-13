@@ -763,6 +763,13 @@ export default {
     height: 100%;
   }
 }
+@media (min-width: 1330px) and (max-width: 1470px) {
+  .callback{
+    &-wrapper{
+      zoom: .8;
+    }
+  }
+}
 @media (max-width: 600px){
   .callback{
     max-width: 100%;

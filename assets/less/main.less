@@ -152,21 +152,21 @@ body { overflow: -moz-scrollbars-none; }
     position: relative;
     .main-line__left{
       position: absolute;
-      top: 314px;
-      width: 15px;
-      background: #000000;
+      top: 75%;
+      width: 2.15%;
+      background: #171717;
       height: 0;
-      transition: all 0.6s;
-      left: 11px;
+      transition: height 0.6s;
+      left: 0;
     }
     .main-line__right{
       position: absolute;
-      top: 314px;
-      width: 15px;
-      background: #000000;
+      top: 75%;
+      width: 2.15%;
+      background: #171717;
       height: 0;
-      transition: all 1s;
-      left: 91px;
+      transition: height 1s;
+      left: 11.3%;
     }
   }
   &-content{
@@ -205,11 +205,10 @@ body { overflow: -moz-scrollbars-none; }
     position: absolute;
     top: 89px;
     width: 0;
-    background: #000000;
+    background: #171717;
     height: 15px;
     left: 29%;
     transition: all 1s;
-    display: none;
   }
   &-container{
     max-width: 1310px;
@@ -738,6 +737,8 @@ body { overflow: -moz-scrollbars-none; }
   background: url("~assets/img/work-bg.jpg") center center;
   padding-bottom: 133px;
   margin-top: 50px;
+  min-height: 1735px;
+  height: 100%;
   .work-stop{
     margin-top: -78px !important;
     left: 0 !important;

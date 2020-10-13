@@ -1,4 +1,4 @@
-@media (min-width: 1330px) and (max-width: 1500px){
+@media (min-width: 1350px) and (max-width: 1500px){
   .header{
     &-music{
       position: relative;
@@ -56,18 +56,19 @@
     }
     .main-content{
       &__img{
+        width: 500px;
+        margin: 0 auto;
+        display: block;
         .main-line__left{
-          top: 218px;
-          width: 10px;
-          left: 107px;
+          width: 10.5px;
+          left: 0px;
         }
         .main-line__right{
-          top: 218px;
-          width: 10px;
-          left: 163px;
+          width: 10.5px;
+          left: 56.5px;
         }
         img{
-          width: 70%;
+          width: 100%;
           margin: 0 auto;
           display: block;
         }
@@ -77,10 +78,9 @@
   .service{
     &-lines{
       top: 88px;
-      width: 525px;
       background: #000000;
       height: 10px;
-      left: 35%;
+      left: 432px;
     }
     &-container{
       max-width: 1250px;
@@ -192,6 +192,267 @@
     }
     &-had{
       left: -3%;
+    }
+    &-title{
+      &__text{
+        font-size: 35px;
+      }
+    }
+  }
+  .work{
+    min-height: 1550px;
+    &-title{
+      &__text{
+        font-size: 35px;
+      }
+    }
+    &-list{
+      max-width: 1250px;
+      zoom: 0.9;
+    }
+  }
+  .document{
+    height: 50vh;
+    &-img{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      img{
+        max-width: 90%;
+      }
+    }
+  }
+  .phone{
+    height: 50vh;
+    &-img{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      img{
+        max-width: 90%;
+      }
+    }
+  }
+  .contact{
+    padding-top: 80px;
+    &-container{
+      max-width: 1250px;
+    }
+    &-block{
+      margin-top: 60px;
+    }
+    &-form{
+      margin-top: 60px;
+    }
+    &-privat{
+      margin-top: 40px;
+    }
+    &-title{
+      &__text{
+        font-size: 35px;
+      }
+    }
+  }
+}
+@media (min-width: 1250px) and (max-width: 1340px){
+  .header{
+    &-music{
+      position: relative;
+      display: block;
+      right: 15px;
+      margin-left: auto;
+    }
+    &-container{
+      max-width: 1250px;
+    }
+    &-logo{
+      width: 11%;
+      img{
+        padding-left: 18px;
+        max-width: 100%;
+      }
+    }
+    &-site{
+      img{
+        padding-right: 15px;
+        max-width: 100%;
+      }
+    }
+    &-lang{
+      padding-left: 50px;
+      &__link{
+        font-size: 17px;
+      }
+    }
+    &-site{
+      a{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        span{
+          font-size: 15px;
+        }
+      }
+    }
+    &-menu{
+      width: 45%;
+      &__link{
+        font-size: 17px;;
+        margin-right: 24px;
+      }
+    }
+  }
+  .main{
+    &-line{
+      height: 57%;
+      overflow: hidden;
+    }
+    &-bottom{
+      height: 10vh;
+    }
+    .main-content{
+      &__img{
+        width: 500px;
+        margin: 0 auto;
+        display: block;
+        .main-line__left{
+          width: 2.3%;
+          left: 0px;
+        }
+        .main-line__right{
+          width: 10px;
+          left: 11.5%;
+        }
+        img{
+          width: 100%;
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    }
+  }
+  .service{
+    &-lines{
+      top: 88px;
+      width: 525px;
+      background: #000000;
+      height: 10px;
+      left: 35%;
+    }
+    &-container{
+      max-width: 1250px;
+    }
+    .card-3{
+      width: 339px;
+      .card-list{
+        padding-left: 32px;
+      }
+    }
+    .card-6{
+      margin-left: 0;
+    }
+    &-list{
+      margin-top: 20px;
+      zoom: 0.95;
+      margin-left: 25px;
+    }
+    &-line{
+      &__block{
+        max-width: 1250px;
+      }
+      &__text{
+        font-size: 40px;
+      }
+      &__block{
+        height: 66px;
+      }
+      .marquee-line{
+        top: 14px;
+        font-size: 50px;
+      }
+    }
+    &-title{
+      &__text{
+        font-size: 35px;
+      }
+    }
+  }
+  .about{
+    &-container{
+      max-width: 1250px;
+      zoom: 0.9;
+    }
+    &-master{
+      width: 56%;
+    }
+    &-partners{
+      width: 73%;
+    }
+    &-content{
+      &__desc{
+        span{
+          font-size: 18px;
+          line-height: 30px;
+        }
+      }
+      &__title{
+        span{
+          font-size: 18px;
+          line-height: 25px;
+        }
+      }
+    }
+    &-title{
+      &__text{
+        font-size: 35px;
+      }
+    }
+  }
+  .keys{
+    padding-bottom: 150px;
+    &-container{
+      max-width: 1250px;
+    }
+    &-content{
+      &__slider{
+        height: 650px !important;
+        .custom-scroll{
+          right: 46% !important;
+        }
+        .content-slide__wrapper{
+          .slider-img{
+            width: 47%;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+    &-title{
+      right: 99px;
+      &__text{
+        font-size: 35px;
+      }
+    }
+  }
+  .reviews{
+    &-container{
+      max-width: 1250px;
+    }
+    &-row{
+      margin-left: calc(44% - 30px);
+    }
+    &-item{
+      margin-bottom: 50px;
+    }
+    &-list{
+      margin-top: 80px;
+    }
+    &-had{
+      left: -3%;
+      zoom: 0.9;
     }
     &-title{
       &__text{
@@ -1014,22 +1275,22 @@
     }
     &-content{
       img{
-        width: 91%;
+        width: 100%;
         height: auto;
         display: block;
         margin-left: auto;
         margin-right: auto;
       }
       &__img{
+        width: 91%;
+
         .main-line__left{
-          top: 122px !important;
-          width: 7px !important;
-          left: 17px !important;
+          width: 8px !important;
+          left: 0px !important;
         }
         .main-line__right{
-          top: 122px !important;
-          width: 7px !important;
-          left: 55px !important;
+          width: 8px !important;
+          left: 42.5px !important;
         }
       }
     }
@@ -1074,6 +1335,11 @@
           font-size: 13px;
         }
       }
+    }
+    &-lines{
+      top: 40px;
+      height: 7px;
+      left: 15.6%;
     }
     &-line{
       margin-top: 25px;
