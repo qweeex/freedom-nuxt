@@ -15,6 +15,7 @@
     <Brief lang="port" />
     <Callback lang="port" />
     <Cookie lang="port" />
+    <Policy lang="port" />
   </div>
 </template>
 
@@ -44,6 +45,8 @@ import Brief from "@/components/Popup/Brief";
 import Callback from "@/components/Popup/Callback";
 // Cookie
 import Cookie from "@/components/Cookie";
+// Policy
+import Policy from "@/components/Popup/Policy";
 
 export default {
   name: "Home",
@@ -59,7 +62,11 @@ export default {
     About,
     Brief,
     Callback,
-    Cookie
+    Cookie,
+    Policy
+  },
+  head: {
+    title: 'Freedom PR Agency Moscou',
   }
 }
 </script>

@@ -444,7 +444,7 @@
           </div>
           <div class="form-policy">
             <p class="form-policy__text">
-              Apertando “Enviar”, você aceita processamento dos <br>seus dados pessoais
+              Apertando “Enviar”, você aceita processamento dos <br> <span class="policy-link" @click="$store.commit('policy/showPopup')">seus dados</span> pessoais
             </p>
           </div>
         </form>

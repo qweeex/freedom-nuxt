@@ -1,5 +1,8 @@
 <template>
   <div class="contact-img">
+    <div class="contact-anime">
+      <div :style="style" ref="lavContainer"></div>
+    </div>
     <div class="contact-square">
       <div class="block-element">
         <div class="elem-smile">
@@ -102,9 +105,27 @@
 </template>
 
 <script>
+
+  import lottie from 'lottie-web';
+  import animationDataRus from '@/static/text_animation_rus.json';
+  import animationDataEng from '@/static/text_animation_eng.json';
+  import animationDataPort from '@/static/text_animation_port.json';
+
   export default {
     name: "ContactBlock",
+    props: ['lang'],
+    data(){
+      return{
+        style: {
+          width: '708px',
+          height: '682px',
+          overflow: 'hidden',
+          margin: '0 auto'
+        }
+      }
+    },
     methods: {
+
       BlockAnimate(){
         let blocks = document.querySelectorAll('.block-element');
         blocks.forEach(element => {
@@ -127,10 +148,55 @@
       },
       TransformBox (elem, x, y){
         elem.style.transform = "skew(" + x + "deg, " + y +"deg)";
+      },
+      ChangeSizeAnimate(){
+        if (screen.width < 600){
+          this.style.width = screen.width + 'px';
+          this.style.height = screen.width + 'px';
+        }
       }
     },
     mounted() {
       this.BlockAnimate();
+      this.ChangeSizeAnimate();
+      let anim;
+
+      if (this.$props.lang === 'ru'){
+        anim = lottie.loadAnimation({
+            container: this.$refs.lavContainer,
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            animationData: animationDataRus
+          }
+        );
+      }
+      if (this.$props.lang === 'en'){
+        anim = lottie.loadAnimation({
+            container: this.$refs.lavContainer,
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            animationData: animationDataEng
+          }
+        );
+      }
+      if (this.$props.lang === 'port'){
+        anim = lottie.loadAnimation({
+            container: this.$refs.lavContainer,
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            animationData: animationDataPort
+          }
+        );
+      }
+      window.addEventListener('scroll', function(){
+        let HandsOneTopOffset = document.querySelector('.contact').getBoundingClientRect().top + document.body.scrollTop;
+        if (HandsOneTopOffset <= 200){
+          anim.play();
+        }
+      })
     }
   }
 </script>

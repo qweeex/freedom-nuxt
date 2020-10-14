@@ -40,7 +40,10 @@
         </div>
       </div>
       <div class="about-master">
-        <div class="about-master__img"><img src="~/assets/img/julia.png" alt="" /></div>
+        <div class="about-master__img">
+          <img class="about-img__desktop" src="~/assets/img/julia.png" alt="" />
+          <img class="about-img__mobile" src="~/assets/img/julia_mobile.png" alt="" />
+        </div>
         <div class="about-master__title" v-if="lang === 'ru'">
           <p class="name">Юлиана Титаева</p>
           <p class="role">руководитель агентства</p>

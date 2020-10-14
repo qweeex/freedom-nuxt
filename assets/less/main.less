@@ -10,6 +10,10 @@ input[type="text"]{
   appearance: none;
   border-radius: 0;
 }
+.policy-link{
+  text-decoration: underline;
+  cursor: pointer;
+}
 /* хром, сафари */
 body::-webkit-scrollbar { width: 0; }
 
@@ -17,7 +21,9 @@ body::-webkit-scrollbar { width: 0; }
 body { -ms-overflow-style: none; }
 
 /* фф (свойство больше не работает, других способов тоже нет)*/
-body { overflow: -moz-scrollbars-none; }
+body {
+  overflow: -moz-scrollbars-none;
+}
 .cf:before,
 .cf:after {
   content: ".";
@@ -524,6 +530,11 @@ body { overflow: -moz-scrollbars-none; }
       text-align: right;
     }
   }
+  &-img{
+    &__mobile{
+      display: none;
+    }
+  }
 }
 .keys{
   margin-top: 200px;
@@ -665,6 +676,9 @@ body { overflow: -moz-scrollbars-none; }
 .reviews{
   position: relative;
   margin-top: 70px;
+  &-slider{
+    display: none;
+  }
   &-title{
     width: 100%;
     text-align: center;
@@ -931,7 +945,7 @@ body { overflow: -moz-scrollbars-none; }
     }
   }
   &-img{
-    width: 60%;
+    width: 56%;
     img{
       margin-right: auto;
       display: block;
@@ -958,6 +972,7 @@ body { overflow: -moz-scrollbars-none; }
   }
   &-img{
     width: 60%;
+
   }
   &-title{
     &__text{
@@ -1079,6 +1094,7 @@ body { overflow: -moz-scrollbars-none; }
     display: flex;
     justify-content: flex-end;
     padding-top: 45px;
+    position: relative;
     .show-smile{
       .elem-main{
         visibility: hidden;
@@ -1092,6 +1108,10 @@ body { overflow: -moz-scrollbars-none; }
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 116px 116px 116px 116px;
       grid-gap: 27px;
+      position: absolute;
+      left: 28%;
+      bottom: 10%;
+      zoom: 0.85;
       .block-element{
         position: relative;
         .elem-smile{

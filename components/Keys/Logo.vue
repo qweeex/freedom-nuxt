@@ -1,6 +1,6 @@
 <template>
     <div class="keys-logo">
-        <div v-if="this.phone === false" v-swiper:mySwiper="swiperOptions" class="keys-logo__slider swiper-container">
+      <div v-if="this.phone === false" v-swiper:mySwiper="swiperOptions" class="keys-logo__slider swiper-container">
             <div class="swiper-wrapper">
                 <div class="logo-slide swiper-slide"><img src="~/assets/img/logo/logo-1.png" alt="" /></div>
                 <div class="logo-slide swiper-slide"><img src="~/assets/img/logo/logo-2.png" alt="" /></div>

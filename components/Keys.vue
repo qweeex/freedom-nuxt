@@ -100,7 +100,11 @@
                     <div class="PopupKeys-content__bottom">
                         <div class="bottom-list" v-html="popupContent"></div>
                         <div class="bottom-result">
-                            <div class="result-title"><p class="result-title__text">Результат</p></div>
+                            <div class="result-title">
+                              <p class="result-title__text" v-if="lang === 'ru'">Результат</p>
+                              <p class="result-title__text" v-if="lang === 'en'">Result</p>
+                              <p class="result-title__text" v-if="lang === 'port'">Resultado</p>
+                            </div>
                             <div class="result-desc">
                                 <p v-html="popupResult"></p>
                             </div>

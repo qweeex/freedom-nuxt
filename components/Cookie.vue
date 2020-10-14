@@ -26,7 +26,7 @@ export default {
   props: ['lang'],
   data(){
     return{
-      showCookie: false
+      showCookie: true
     }
   }
 }

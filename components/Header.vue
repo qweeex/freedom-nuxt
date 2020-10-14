@@ -64,27 +64,27 @@
         </div>
         <div class="mobile-middle">
           <div class="middle-menu">
-            <nav v-if="lang === 'ru'">
+            <div v-if="lang === 'ru'">
               <a href="#service" class="header-menu__link">Услуги</a>
               <a href="#about" class="header-menu__link">О нас</a>
               <a href="#keys" class="header-menu__link">Кейсы</a>
               <a href="#consulting" class="header-menu__link">Как мы работаем</a>
               <a href="#contact" class="header-menu__link">Контакты</a>
-            </nav>
-            <nav v-if="lang === 'en'">
+            </div>
+            <div v-if="lang === 'en'">
               <a href="#service" class="header-menu__link">Services</a>
               <a href="#about" class="header-menu__link">About us</a>
               <a href="#keys" class="header-menu__link">Рrojects</a>
               <a href="#consulting" class="header-menu__link">How We Work</a>
               <a href="#contact" class="header-menu__link">Contact us</a>
-            </nav>
-            <nav v-if="lang === 'port'">
+            </div>
+            <div v-if="lang === 'port'">
               <a href="#service" class="header-menu__link">Serviços</a>
               <a href="#about" class="header-menu__link">Sobre nós</a>
               <a href="#keys" class="header-menu__link">Casos</a>
               <a href="#consulting" class="header-menu__link">Como trabalhamos</a>
               <a href="#contact" class="header-menu__link">Contatos</a>
-            </nav>
+            </div>
           </div>
           <div class="middle-site">
             <a href="">

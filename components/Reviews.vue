@@ -27,6 +27,26 @@
             </div>
           </div>
         </div>
+        <div v-swiper:rewiews="sliderConfig" class="swiper-container reviews-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="item in reviews" :key="item.id">
+                <div class="reviews-item" >
+                  <div class="item-img"><img :src="item.img " alt="" /></div>
+                  <div class="item-text">
+                <span>
+                  {{  item.small }}
+                </span>
+                    <br>
+                    <span class="full-reviews" v-if="lang === 'ru'" @click="getReviews(item.id)">Читать полностью</span>
+                    <span class="full-reviews" v-if="lang === 'en'" @click="getReviews(item.id)">Read more</span>
+                    <span class="full-reviews" v-if="lang === 'port'" @click="getReviews(item.id)">Leia na íntegra</span>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
     </div>
     <div class="reviews-popup" :class="{ showReview: PopupShow }">
@@ -56,6 +76,7 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import Lottie from 'vue-lottie/src/lottie.vue';
 import animationData from '@/static/lf20_1jfbv90j.json';
 import Axios from 'axios';
@@ -64,7 +85,9 @@ export default {
   name: "Reviews",
   props: ['lang'],
   components: {
-    'lottie': Lottie
+    'lottie': Lottie,
+    Swiper,
+    SwiperSlide
   },
   data(){
     return{
@@ -82,7 +105,17 @@ export default {
       PopupImg: '',
       PopupName: '',
       PopupContent: '',
-      PopupShow: false
+      PopupShow: false,
+      sliderConfig: {
+        slidesPerView: 1,
+        slidesPerColumn: 2,
+        spaceBetween: 30,
+        direction: 'horizontal',
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+        },
+      },
     }
   },
   methods: {

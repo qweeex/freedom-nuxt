@@ -1,5 +1,5 @@
 <template>
-  <section class="contact">
+  <section class="contact" id="contact">
     <div class="contact-container">
       <div class="contact-row">
         <div class="contact-wrapper">
@@ -55,18 +55,18 @@
             </div>
             <div class="form-policy">
               <p class="form-policy__text" v-if="lang === 'ru'">
-                Нажав кнопку “Отправить” вы даете согласие<br />на обработку Ваших <n-link to="/policy" no-prefetch>персональных данных</n-link>
+                Нажав кнопку “Отправить” вы даете согласие<br />на обработку Ваших <span class="policy-link" @click="$store.commit('policy/showPopup')">персональных данных</span>
               </p>
               <p class="form-policy__text" v-if="lang === 'en'">
-                By pressing the Send button, you agree to your <br>personal data processing
+                By pressing the Send button, you agree to your <br> <span class="policy-link" @click="$store.commit('policy/showPopup')">personal data</span> processing
               </p>
               <p class="form-policy__text" v-if="lang === 'port'">
-                Apertando “Enviar”, você aceita processamento dos <br>seus dados pessoais
+                Apertando “Enviar”, você aceita processamento dos <br> <span class="policy-link" @click="$store.commit('policy/showPopup')">seus dados</span> pessoais
               </p>
             </div>
           </div>
         </div>
-        <ContactBlock/>
+        <ContactBlock :lang="this.$props.lang"/>
       </div>
       <div class="contact-row">
         <div class="contact-privat">

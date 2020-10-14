@@ -217,7 +217,7 @@ export default {
     WorkAnimate(){
       window.addEventListener('scroll', function(){
         let HandsOneTopOffset = document.querySelector('.work').getBoundingClientRect().top + document.body.scrollTop;
-        if (HandsOneTopOffset <= 100){
+        if (HandsOneTopOffset <= 200){
           document.querySelector('.item-5').classList.remove('work-stop');
           document.querySelector('.item-4').classList.remove('work-stop');
           document.querySelector('.item-3').classList.remove('work-stop');
