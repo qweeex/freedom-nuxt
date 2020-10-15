@@ -60,9 +60,7 @@
             <img :src="PopupImg" alt="">
           </div>
           <div class="top-name">
-            <span>
-              {{ PopupName }}
-            </span>
+            <span v-html="PopupName"></span>
           </div>
         </div>
         <div class="wrap-content">
