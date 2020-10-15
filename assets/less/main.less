@@ -902,12 +902,21 @@ body {
     width: 35%;
     text-align: right;
     padding-right: 35px;
+    @keyframes documentColor {
+      0%, 25% {
+        color: #171717;
+      }
+      50%, 100% {
+        color: #fff;
+      }
+    }
     &__text{
       font-weight: 800;
       font-size: 35px;
       line-height: 128.5%;
       /* or 45px */
-
+      -webkit-animation: 0.5s documentColor ease-out infinite;
+      animation: 0.5s documentColor ease-out infinite;
       text-align: right;
       text-transform: uppercase;
       cursor: pointer;
@@ -932,12 +941,21 @@ body {
   &-title{
     width: 40%;
     text-align: left;
+    @keyframes phoneColor {
+      0%, 25% {
+        color: #fff;
+      }
+      50%, 100% {
+        color: #E72F75;
+      }
+    }
     &__text{
       font-weight: 800;
       font-size: 35px;
       line-height: 128.5%;
       /* or 45px */
-
+      -webkit-animation: 0.5s phoneColor ease-out infinite;
+      animation: 0.5s phoneColor ease-out infinite;
       text-align: left;
       text-transform: uppercase;
       cursor: pointer;
@@ -1114,8 +1132,11 @@ body {
       zoom: 0.85;
       .block-element{
         position: relative;
-        .elem-smile{
+        .elem-main{
           opacity: 0;
+        }
+        .elem-smile{
+          opacity: 1;
           position: absolute;
           left: 0;
           top: 0;

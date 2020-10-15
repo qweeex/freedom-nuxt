@@ -1,6 +1,6 @@
 <template>
     <div>
-      <section class="header video-elem" >
+      <section class="header video-elem " >
         <div class="header-container">
           <div class="header-logo">
             <a href="/"><img src="~/assets/img/logo.svg" alt="" /></a>

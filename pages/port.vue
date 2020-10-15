@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <Header lang="port"/>
-    <MainScreen/>
+    <MainScreen lang="port"/>
     <section class="big-bg">
       <Services lang="port"/>
       <About lang="port"/>

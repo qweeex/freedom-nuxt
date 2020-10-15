@@ -4,97 +4,97 @@
       <div :style="style" ref="lavContainer"></div>
     </div>
     <div class="contact-square">
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block1.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block2.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block3.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block4.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block5.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block6.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block7.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block8.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block9.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block10.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block11.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block12.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block13.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block14.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
         <div class="elem-main"><img src="~assets/img/block/block15.png" alt=""></div>
       </div>
-      <div class="block-element">
+      <div class="block-element animateBlock">
         <div class="elem-smile">
           <img src="~assets/img/smile.png" alt="">
         </div>
@@ -125,19 +125,21 @@
       }
     },
     methods: {
-
       BlockAnimate(){
         let blocks = document.querySelectorAll('.block-element');
         blocks.forEach(element => {
           element.addEventListener('mouseover', () => {
-            /*for (let i = 0; i < 10; i++){
-              this.TransformBox(element, this.randomInteger(-5,5), this.randomInteger(-5, 5));
-              //console.log(i)
-            }*/
-            element.classList.add('show-smile');
+            element.classList.add('animeShow')
+            setTimeout(() => {
+              element.classList.remove('animateBlock');
+              element.classList.remove('animeShow');
+            }, 1000)
           })
           element.addEventListener('mouseout', () => {
-            element.classList.remove('show-smile');
+            blocks.forEach((item) => {
+              item.classList.add('animateBlock');
+              item.classList.remove('animeShow');
+            })
           })
         })
       },
@@ -147,7 +149,7 @@
         return Math.round(rand);
       },
       TransformBox (elem, x, y){
-        elem.style.transform = "skew(" + x + "deg, " + y +"deg)";
+        elem.style.transform = "translate(" + x + "px, " + y +"px)";
       },
       ChangeSizeAnimate(){
         if (screen.width < 600){
@@ -197,10 +199,37 @@
           anim.play();
         }
       })
+      let blocks = document.querySelectorAll('.block-element');
+      blocks[ran(0, blocks.length)].classList.remove('animateBlock');
+      function ran(min, max){
+        let rand = min - 0.5 + Math.random() * (max - min + 1);
+        return Math.round(rand);
+      }
     }
   }
 </script>
 
 <style scoped lang="less">
-
+  .animateBlock{
+    .elem-main{
+      opacity: 1 !important;
+    }
+    .elem-smile{
+      opacity: 0 !important;
+    }
+  }
+  .animeShow{
+    -webkit-animation: 0.2s animateBlock ease-out infinite;
+    animation: 0.2s animateBlock ease-out infinite;
+  }
+  @keyframes animateBlock {
+    0%, 25% {
+      left: -1px;
+      transform: translateX(-2%) translateY(-2%);
+    }
+    50%, 100% {
+      left: 1px;
+      transform: translateX(2%) translateY(2%);
+    }
+  }
 </style>

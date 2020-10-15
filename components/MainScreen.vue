@@ -1,7 +1,35 @@
 <template>
   <div>
       <section class="main">
-        <div id="made-in-ny"></div>
+        <div class="video-main" style="display: none">
+          <video-background
+            v-if="lang === 'ru'"
+            src="http://freedom.sitecriy.beget.tech/assets/video/rus.mp4"
+            style="max-height: 100%; width: 100vw; height: 100vh;"
+            :autoplay="true"
+            :loop="false"
+            @ended="StopVideo"
+            ref="player"
+          />
+          <video-background
+            v-if="lang === 'en'"
+            src="http://freedom.sitecriy.beget.tech/assets/video/eng.mp4"
+            style="max-height: 100%; width: 100vw; height: 100vh;"
+            :autoplay="true"
+            :loop="false"
+            @ended="StopVideo"
+            ref="player"
+          />
+          <video-background
+            v-if="lang === 'port'"
+            src="http://freedom.sitecriy.beget.tech/assets/video/port.mp4"
+            style="max-height: 100%; width: 100vw; height: 100vh;"
+            :autoplay="true"
+            :loop="false"
+            @ended="StopVideo"
+            ref="player"
+          />
+        </div>
         <div class="main-line video-elem"><img src="~/assets/img/scroll-line.svg" alt="" /></div>
         <div class="main-content video-elem">
           <div class="main-content__img">
@@ -19,6 +47,7 @@
 <script>
 export default {
   name: "MainScreen",
+  props: ['lang'],
   methods: {
     MainAnimate(){
 
@@ -57,6 +86,11 @@ export default {
         }, 1000)
       });
 
+    },
+    StopVideo(){
+      /*document.querySelectorAll('.video-elem').forEach((elem) => {
+        elem.classList.remove('video-elem')
+      })*/
     }
   },
   mounted() {
@@ -65,13 +99,6 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 
-#made-in-ny{
-  height: 100vh;
-  overflow: hidden;
-  transition: all 0.4s;
-  visibility: visible;
-  opacity: 1;
-}
 </style>

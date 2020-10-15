@@ -1,5 +1,5 @@
 <template>
-  <div class="work">
+  <div class="work" id="consulting">
     <div class="work-title">
       <p class="work-title__text" v-if="lang === 'ru'">Как мы работаем</p>
       <p class="work-title__text" v-if="lang === 'en'">How We Work</p>

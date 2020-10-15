@@ -25,7 +25,10 @@
     "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1",
     "vue-lottie": "^0.2.1",
-    "vue-marquee-text-component": "^1.2.0"
+    "vue-marquee-text-component": "^1.2.0",
+    "vue-responsive-video-background-player": "^1.1.2",
+    "vue-video-background": "^0.1.2",
+    "vue-vimeo-player": "^0.1.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",

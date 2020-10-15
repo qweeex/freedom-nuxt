@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <Header lang="en"/>
-    <MainScreen/>
+    <MainScreen lang="en"/>
     <section class="big-bg">
       <Services lang="en"/>
       <About lang="en"/>
