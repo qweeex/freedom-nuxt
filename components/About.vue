@@ -138,7 +138,7 @@ export default {
     right: 0;
     top: 0;
     height: 0;
-    transition: all 1s;
+    transition: all 2s;
     width: 15.6px;
     background: #171717;
     display: block;

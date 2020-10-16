@@ -28,7 +28,8 @@
     "vue-marquee-text-component": "^1.2.0",
     "vue-responsive-video-background-player": "^1.1.2",
     "vue-video-background": "^0.1.2",
-    "vue-vimeo-player": "^0.1.0"
+    "vue-vimeo-player": "^0.1.0",
+    "vue-yandex-metrika": "^1.8.3"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",

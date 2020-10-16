@@ -70,7 +70,7 @@
       </div>
       <div class="contact-row">
         <div class="contact-privat">
-          <p class="contact-privat__text">© 2020 “FREEDOM PR”. All rights reserved.<br />Privacy policy</p>
+          <p class="contact-privat__text">© 2020 “FREEDOM PR”. All rights reserved.<br /> <span class="policy-link" @click="$store.commit('policy/showPopup')">Privacy policy</span></p>
         </div>
       </div>
     </div>

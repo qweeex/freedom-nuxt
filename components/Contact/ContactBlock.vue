@@ -121,7 +121,8 @@
           height: '682px',
           overflow: 'hidden',
           margin: '0 auto'
-        }
+        },
+        startAnimate: false
       }
     },
     methods: {
@@ -159,7 +160,7 @@
       }
     },
     mounted() {
-      this.BlockAnimate();
+      //this.BlockAnimate();
       this.ChangeSizeAnimate();
       let anim;
 
@@ -197,20 +198,34 @@
         let HandsOneTopOffset = document.querySelector('.contact').getBoundingClientRect().top + document.body.scrollTop;
         if (HandsOneTopOffset <= 200){
           anim.play();
+          if(!this.startAnimate){
+            let blocks = document.querySelectorAll('.block-element');
+            let element = blocks[6];
+            element.classList.add('animeShow')
+            setTimeout(() => {
+              element.classList.remove('animateBlock');
+              element.classList.remove('animeShow');
+            }, 1000);
+
+            this.startAnimate = true;
+          }
         }
       })
-      let blocks = document.querySelectorAll('.block-element');
-      blocks[ran(0, blocks.length)].classList.remove('animateBlock');
-      function ran(min, max){
-        let rand = min - 0.5 + Math.random() * (max - min + 1);
-        return Math.round(rand);
-      }
     }
   }
 </script>
 
 <style scoped lang="less">
   .animateBlock{
+    cursor: pointer;
+    &:hover{
+      .elem-main{
+        opacity: 0 !important;
+      }
+      .elem-smile{
+        opacity: 1 !important;
+      }
+    }
     .elem-main{
       opacity: 1 !important;
     }

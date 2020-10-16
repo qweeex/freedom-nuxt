@@ -55,7 +55,11 @@
                   slidesPerView: 3,
                   direction: 'horizontal',
                   spaceBetween: 35,
-                  slidesOffsetBefore: 15
+                  slidesOffsetBefore: 15,
+                  autoplay: {
+                    delay: 2000
+                  },
+                  loop: true
                 },
                 swiperOptions:{
                     direction: 'vertical',

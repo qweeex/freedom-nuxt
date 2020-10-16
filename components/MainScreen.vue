@@ -71,7 +71,7 @@ export default {
         let lineService = document.querySelector('.service-lines');
 
         LineRight.style.top = (img.height - 4) + 'px';
-        LineRight.style.height = (lineService.offsetTop + offsetImg() + 4) + 'px';
+        LineRight.style.height = (lineService.offsetTop + offsetImg() + 5) + 'px';
 
         setTimeout(() => {
           let line = document.querySelector('.service-lines');
@@ -83,7 +83,7 @@ export default {
           line.style.left = ((width / 2) + MainLine) + 'px';
           let widthLine = container - (((width / 2) + MainLine) + document.querySelector('.service-title').clientWidth);
           line.style.width = (widthLine - 10) + 'px';
-        }, 1000)
+        }, 1900)
       });
 
     },

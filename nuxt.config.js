@@ -39,6 +39,7 @@ export default {
     { src: '~plugins/anime.min.js'},
     { src: '~plugins/nuxt-swiper-plugin.js'},
     { src: '~plugins/jquery.fancybox.min.js'},
+    { src: '~plugins/metrika.js'},
     {
       src: '~/plugins/vue-video-background',
     }
