@@ -6,7 +6,7 @@ export default {
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-  ssr: false,
+  ssr: true,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Freedom PR Agency Москва',
@@ -34,15 +34,13 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~plugins/jquery-3.5.1.min.js'},
-    { src: '~plugins/jquery.marquee.min.js'},
-    { src: '~plugins/anime.min.js'},
-    { src: '~plugins/nuxt-swiper-plugin.js'},
-    { src: '~plugins/jquery.fancybox.min.js'},
-    { src: '~plugins/metrika.js'},
-    {
-      src: '~/plugins/vue-video-background',
-    }
+    { src: '~plugins/jquery-3.5.1.min.js', mode: "client", ssr: false},
+    { src: '~plugins/jquery.marquee.min.js', mode: "client", ssr: false},
+    { src: '~plugins/anime.min.js', mode: "client", ssr: false},
+    { src: '~plugins/nuxt-swiper-plugin.js', mode: "client", ssr: false},
+    { src: '~plugins/jquery.fancybox.min.js', mode: "client", ssr: false},
+    { src: '~plugins/metrika.js', mode: "client", ssr: false},
+    { src: '~/plugins/vue-video-background', mode: "client", ssr: false}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

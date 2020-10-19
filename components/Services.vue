@@ -238,13 +238,9 @@
 
 <script>
 
-import MarqueeText from 'vue-marquee-text-component'
 export default {
   name: "Services",
   props: ['lang'],
-  components: {
-    MarqueeText
-  },
   mounted() {
     $('.marquee-white').marquee({
       duration: 5000,

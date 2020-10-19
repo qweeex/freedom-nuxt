@@ -88,7 +88,6 @@
 
 <style scoped>
     .keys-logo__slider{
-        height: 100vh;
         overflow: hidden;
     }
     .keys-logo__slider .logo-slide{

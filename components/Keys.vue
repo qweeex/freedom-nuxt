@@ -4,7 +4,7 @@
             <div class="keys-row">
                 <Logo/>
                 <div v-if="this.phone === false" :class="{ hiddenContent: showPopup }" class="keys-content keys-desktop">
-                    <div v-swiper:KeysSwiper="swiperOptions" class="keys-content__slider swiper-container">
+                    <div ref="KeysSwiper" v-swiper:KeysSwiper="swiperOptions" class="keys-content__slider swiper-container">
                         <div class="swiper-wrapper">
                             <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.id">
                                 <div class="content-slide__wrapper">
@@ -158,7 +158,6 @@
           spaceBetween: 40,
           scrollbar: {
             el: '.swiper-scrollbar',
-            draggable: true,
             dragSize: 39
           },
           breakpoints: {
@@ -171,7 +170,7 @@
             600: {
               direction: 'vertical',
               slidesPerView: 2,
-              spaceBetween: 0,
+              spaceBetween: 40,
             }
           }
         },
@@ -234,7 +233,6 @@
       },
        mounted() {
         this.getKey();
-        this.InitKeys();
       }
     }
 </script>
