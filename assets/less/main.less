@@ -156,10 +156,15 @@ body {
   height: 100vh;
   .main-content__img{
     position: relative;
+    .main-small{
+      display: none;
+    }
+    .main-mobile{
+      display: none;
+    }
     .main-line__left{
       position: absolute;
-      top: 75%;
-      width: 2.15%;
+      width: 14px;
       background: #171717;
       height: 0;
       transition: height 1.5s;
@@ -167,12 +172,11 @@ body {
     }
     .main-line__right{
       position: absolute;
-      top: 75%;
-      width: 2.15%;
+      width: 14px;
       background: #171717;
       height: 0;
       transition: height 2s;
-      left: 11.3%;
+      left: 82px;
     }
   }
   &-content{
@@ -553,7 +557,7 @@ body {
     position: relative;
     width: 250px;
     &::before{
-      width: 15.5px;
+      width: 16px;
       height: 233px;
       display: block;
       content: '';

@@ -33,8 +33,9 @@
         <div class="main-line video-elem"><img src="~/assets/img/scroll-line.svg" alt="" /></div>
         <div class="main-content video-elem">
           <div class="main-content__img">
-            <img src="~/assets/img/master.svg" alt="">
-
+            <img src="~/assets/img/master.svg" class="main-master" alt="">
+            <img src="~/assets/img/master_small.svg" class="main-small" alt="">
+            <img src="~/assets/img/master__mobile.svg" class="main-mobile" alt="">
             <div class="main-line__left"></div>
             <div class="main-line__right"></div>
           </div>
@@ -48,13 +49,34 @@
 export default {
   name: "MainScreen",
   props: ['lang'],
+  data(){
+    return{
+      dataWidth: 0
+    }
+  },
   methods: {
     MainAnimate(){
 
       window.addEventListener('scroll', function () {
         let LineLeft = document.querySelector('.main-line__left');
         let LineRight = document.querySelector('.main-line__right');
-        let img = document.querySelector('.main-content__img > img');
+        let img = null;
+        
+        if(document.body.offsetWidth > 1500){
+          img = document.querySelector('.main-content__img > .main-master');
+          console.log('big');
+        }
+        if(document.body.offsetWidth > 1050 && document.body.offsetWidth < 1499){
+          img = document.querySelector('.main-content__img > .main-small');
+          console.log('small');
+        }
+        if(document.body.offsetWidth > 320 && document.body.offsetWidth < 1000){
+          img = document.querySelector('.main-content__img > .main-mobile');
+          console.log('mobile');
+        }
+
+        
+
         let service = document.querySelector('.service');
         // Считаем отступ под картинкой
         const offsetImg = () => {
@@ -63,10 +85,11 @@ export default {
           let mainHeight = document.querySelector('.main').clientHeight;
           return mainHeight - picHeight;
         }
+
         // Left line
         LineLeft.style.top = (img.height - 4) + 'px';
         LineLeft.style.height =  (service.clientHeight + offsetImg() + 60) + 'px';
-
+        
         // Right line
         let lineService = document.querySelector('.service-lines');
 
@@ -95,6 +118,11 @@ export default {
   },
   mounted() {
     this.MainAnimate();
+  },
+  created(){
+    if(process.client){
+      this.dataWidth = window.innerWidth;
+    }
   }
 }
 </script>

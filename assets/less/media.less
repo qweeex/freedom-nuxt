@@ -56,16 +56,22 @@
     }
     .main-content{
       &__img{
-        width: 500px;
+        width: 510px;
         margin: 0 auto;
         display: block;
+        .main-small{
+          display: block;
+        }
+        .main-master{
+          display: none;
+        }
         .main-line__left{
-          width: 10.5px;
+          width: 10px;
           left: 0px;
         }
         .main-line__right{
-          width: 10.5px;
-          left: 57px;
+          width: 10px;
+          left: 59px;
         }
         img{
           width: 100%;
@@ -318,16 +324,22 @@
     }
     .main-content{
       &__img{
-        width: 500px;
+        width: 510px;
         margin: 0 auto;
         display: block;
+        .main-small{
+          display: block;
+        }
+        .main-master{
+          display: none;
+        }
         .main-line__left{
-          width: 2.3%;
+          width: 10px;
           left: 0px;
         }
         .main-line__right{
           width: 10px;
-          left: 11.5%;
+          left: 59px;
         }
         img{
           width: 100%;
@@ -1288,23 +1300,26 @@
       display: none;
     }
     &-content{
-      img{
-        width: 100%;
-        height: auto;
-        display: block;
+      &__img{
+        width: max-content;
         margin-left: auto;
         margin-right: auto;
-      }
-      &__img{
-        width: 91%;
-
+        .main-small{
+          display: none;
+        }
+        .main-master{
+          display: none;
+        }
+        .main-mobile{
+          display: block !important;
+        }
         .main-line__left{
-          width: 8px !important;
-          left: 0px !important;
+          width: 7px !important;
+          left: 0px
         }
         .main-line__right{
-          width: 8px !important;
-          left: 42.5px !important;
+          width: 7px !important;
+          left: 40px !important;
         }
       }
     }
@@ -1927,7 +1942,7 @@
   }
   .main-content__img .main-line__right {
     width: 7px !important;
-    left: 39px !important;
+    left: 40px !important;
   }
 }
 @media (min-width: 300px) and (max-width: 330px) {

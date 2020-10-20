@@ -118,12 +118,8 @@ export default {
   },
   methods: {
     getReviews: function (id) {
-      const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?id=' + id;
-      Axios.get(url, {
-        headers: {
-          lang: this.$props.lang
-        }
-      })
+      const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?id=' + id + '&lang=' + this.$props.lang;
+      Axios.get(url)
         .then((res) => {
           let data = res.data;
           this.PopupImg = data[0].img;
@@ -136,13 +132,8 @@ export default {
     }
   },
   async mounted() {
-    const url = 'http://freedom.sitecriy.beget.tech/api/getreviews';
-    const { data } = await Axios.get(url, {
-      headers: {
-        lang: this.$props.lang
-      }
-    })
-    console.log(data);
+    const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?lang=' + this.$props.lang;
+    const { data } = await Axios.get(url);
     this.reviews = data;
   },
   created(){

@@ -192,21 +192,13 @@
           PopupHidden(){
               this.showPopup = false;
           },
-          InitKeys(){
-            let Height = screen.height;
-            document.querySelector('.keys-content__slider').style.height = 900 + 'px';
-          },
           CheckDevice(){
             //return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
             return false
           },
           async getKeys(id){
-            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?id=' + id;
-            await axios.get(url, {
-                headers: {
-                  lang: this.$props.lang
-                }
-              })
+            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?id=' + id + '&lang=' + this.$props.lang;
+            await axios.get(url)
               .then((res) => {
                 console.log(res.data.data[0])
                 this.popupImg = res.data.data[0].gallary;
@@ -221,14 +213,9 @@
               })
           },
           async getKey(){
-            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys';
-            const { data } = await axios.get(url, {
-              headers: {
-                lang: this.$props.lang
-              }
-            })
+            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?lang=' + this.$props.lang;
+            const { data } = await axios.get(url);
             this.keysInfo = data.data;
-            console.log(data.data)
           }
       },
        mounted() {
