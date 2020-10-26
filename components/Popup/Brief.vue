@@ -457,6 +457,7 @@
         <span v-if="lang === 'port'">Sua inscrição foi enviada!</span>
       </div>
     </div>
+    <notifications group="brief" />
   </div>
 </template>
 
@@ -486,31 +487,58 @@ export default {
   },
   methods: {
     checkForm: function (e) {
+      e.preventDefault();
 
-      this.success = true;
+      if (this.name === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Ваше ФИО</b>',
+          type: 'warn',
+          duration: 100000,
+        });
+        return
+      }
+      if (this.company === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Название компании</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.position === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Должность</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.email === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>E-mail</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.phone === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Телефон</b>',
+          type: 'warn'
+        });
+        return
+      }
 
-      setTimeout(() => {
-        this.$store.commit('brief/hiddenPopup');
-        this.success = false;
-      }, 1500);
-      return;
-      if (!this.company){
-        this.errors.push('Company is empty')
-      }
-      if (!this.name){
-        this.errors.push('Name is empty')
-      }
-      if (!this.position){
-        this.errors.push('Name is empty')
-      }
-      if (!this.email){
-        this.errors.push('Name is empty')
-      }
-      if (!this.phone){
-        this.errors.push('Name is empty')
-      }
+      console.log('Отправляем')
 
-      const data = {
+      /*const data = {
         company: this.company,
         name: this.name,
         position: this.position,
@@ -531,11 +559,14 @@ export default {
       })
       .then((res) => {
         console.log(res)
+        this.success = true;
+      })
+      .finally(() => {
+        this.success = false;
+
       })
 
-
-      e.preventDefault();
-      //this.success = true;
+      //this.success = true;*/
 
     }
   }

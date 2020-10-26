@@ -1,12 +1,12 @@
 import webpack from 'webpack';
 export default {
   server: {
-    port: 8000, // default: 3000
+    port: 30000, // default: 3000
     host: '0.0.0.0', // default: localhost
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-  ssr: true,
+  ssr: false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Freedom PR Agency Москва',
@@ -40,7 +40,8 @@ export default {
     { src: '~plugins/nuxt-swiper-plugin.js', mode: "client", ssr: false},
     { src: '~plugins/jquery.fancybox.min.js', mode: "client", ssr: false},
     { src: '~plugins/metrika.js', mode: "client", ssr: false},
-    { src: '~/plugins/vue-video-background', mode: "client", ssr: false}
+    { src: '~/plugins/vue-video-background', mode: "client", ssr: false},
+    { src: '~/plugins/notifications.js', mode: "client", ssr: false}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

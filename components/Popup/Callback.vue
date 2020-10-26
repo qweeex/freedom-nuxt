@@ -150,7 +150,7 @@
 
 <script>
 
-
+import Axios from 'axios';
 
 export default {
   name: "Callback",
@@ -176,25 +176,23 @@ export default {
         this.$store.commit('callback/hiddenPopup');
         this.success = false;
       }, 1500);
-      return;
-      if (!this.company){
-        this.errors.push('Company is empty')
-      }
-      if (!this.name){
-        this.errors.push('Name is empty')
-      }
-      if (!this.position){
-        this.errors.push('Name is empty')
-      }
-      if (!this.email){
-        this.errors.push('Name is empty')
-      }
-      if (!this.phone){
-        this.errors.push('Name is empty')
-      }
+
+      Axios.post('http://freedom.sitecriy.beget.tech/api/message', {
+        data: {
+          company: this.company,
+          site: this.site,
+          name: this.name,
+          position: this.position,
+          email: this.email,
+          phone: this.phone,
+        }
+      })
+      .then((res) => {
+        console.log(res);
+      })
 
       e.preventDefault();
-      this.success = true;
+      //this.success = true;
 
     }
   }

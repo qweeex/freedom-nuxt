@@ -1,36 +1,22 @@
 <template>
   <div>
       <section class="main">
-        <div class="video-main" style="display: none">
-          <video-background
-            v-if="lang === 'ru'"
-            src="http://freedom.sitecriy.beget.tech/assets/video/rus.mp4"
-            style="max-height: 100%; width: 100vw; height: 100vh;"
-            :autoplay="true"
-            :loop="false"
-            @ended="StopVideo"
-            ref="player"
-          />
-          <video-background
-            v-if="lang === 'en'"
-            src="http://freedom.sitecriy.beget.tech/assets/video/eng.mp4"
-            style="max-height: 100%; width: 100vw; height: 100vh;"
-            :autoplay="true"
-            :loop="false"
-            @ended="StopVideo"
-            ref="player"
-          />
-          <video-background
-            v-if="lang === 'port'"
-            src="http://freedom.sitecriy.beget.tech/assets/video/port.mp4"
-            style="max-height: 100%; width: 100vw; height: 100vh;"
-            :autoplay="true"
-            :loop="false"
-            @ended="StopVideo"
-            ref="player"
-          />
+        <div class="main-line video-elem">
+          <img v-if="lang === 'ru'"
+               data-fancybox="1"
+               href="https://www.youtube.com/watch?v=-5KAN9_CzSA"
+               src="~/assets/img/scroll-line.svg" alt="" />
+          <img v-if="lang === 'en'"
+               data-fancybox="1"
+               href="https://www.youtube.com/watch?v=-5KAN9_CzSA"
+               src="~/assets/img/scroll-line__en.svg"
+               alt="" />
+          <img v-if="lang === 'port'"
+               src="~/assets/img/scroll-line__port.svg"
+               data-fancybox="1"
+               href="https://www.youtube.com/watch?v=-5KAN9_CzSA"
+               alt="" />
         </div>
-        <div class="main-line video-elem"><img src="~/assets/img/scroll-line.svg" alt="" /></div>
         <div class="main-content video-elem">
           <div class="main-content__img">
             <img src="~/assets/img/master.svg" class="main-master" alt="">
@@ -61,7 +47,7 @@ export default {
         let LineLeft = document.querySelector('.main-line__left');
         let LineRight = document.querySelector('.main-line__right');
         let img = null;
-        
+
         if(document.body.offsetWidth > 1500){
           img = document.querySelector('.main-content__img > .main-master');
           console.log('big');
@@ -75,7 +61,7 @@ export default {
           console.log('mobile');
         }
 
-        
+
 
         let service = document.querySelector('.service');
         // Считаем отступ под картинкой
@@ -89,7 +75,7 @@ export default {
         // Left line
         LineLeft.style.top = (img.height - 4) + 'px';
         LineLeft.style.height =  (service.clientHeight + offsetImg() + 60) + 'px';
-        
+
         // Right line
         let lineService = document.querySelector('.service-lines');
 
