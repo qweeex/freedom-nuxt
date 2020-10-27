@@ -147,8 +147,10 @@
           spaceBetween: 5,
           slidesOffsetBefore: 15,
           scrollbar: {
-            el: '.swiper-scrollbar1',
+            el: '.swiper-scrollbar',
             draggable: true,
+            snapOnRelease: false,
+            hide: false,
             dragSize: 39
           },
         },
@@ -158,7 +160,10 @@
           spaceBetween: 40,
           scrollbar: {
             el: '.swiper-scrollbar',
-            dragSize: 39
+            dragSize: 38,
+            draggable: true,
+            snapOnRelease: false,
+            hide: false
           },
           breakpoints: {
             // when window width is >= 320px
@@ -189,6 +194,9 @@
         }
       },
       methods: {
+          updates(){
+            this.KeysSwiper.update()
+          },
           PopupHidden(){
               this.showPopup = false;
           },
@@ -216,10 +224,22 @@
             const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?lang=' + this.$props.lang;
             const { data } = await axios.get(url);
             this.keysInfo = data.data;
+            if (this.phone === false){
+              this.KeysSwiper.update();
+            } else {
+              this.KeysSwiper2.update();
+            }
           }
       },
        mounted() {
         this.getKey();
+        window.addEventListener('scroll', () => {
+          if (this.phone === false){
+            this.KeysSwiper.update();
+          } else {
+            this.KeysSwiper2.update();
+          }
+        })
       }
     }
 </script>

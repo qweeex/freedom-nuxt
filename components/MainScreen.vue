@@ -4,17 +4,17 @@
         <div class="main-line video-elem">
           <img v-if="lang === 'ru'"
                data-fancybox="1"
-               href="https://www.youtube.com/watch?v=-5KAN9_CzSA"
+               href="https://www.youtube.com/watch?v=50yl206PyCI"
                src="~/assets/img/scroll-line.svg" alt="" />
           <img v-if="lang === 'en'"
                data-fancybox="1"
-               href="https://www.youtube.com/watch?v=-5KAN9_CzSA"
+               href="https://www.youtube.com/watch?v=vGg9lfAacsM"
                src="~/assets/img/scroll-line__en.svg"
                alt="" />
           <img v-if="lang === 'port'"
                src="~/assets/img/scroll-line__port.svg"
                data-fancybox="1"
-               href="https://www.youtube.com/watch?v=-5KAN9_CzSA"
+               href="https://www.youtube.com/watch?v=-cfFdQTDmmg"
                alt="" />
         </div>
         <div class="main-content video-elem">

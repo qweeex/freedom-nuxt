@@ -1,5 +1,6 @@
 <template>
   <div>
+    <notifications group="brief" />
     <section class="document">
       <div class="document-title">
         <p v-if="lang === 'ru'" class="document-title__text" @click="$store.commit('brief/showPopup')">

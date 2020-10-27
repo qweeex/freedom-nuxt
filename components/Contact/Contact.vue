@@ -29,30 +29,30 @@
               <p class="form-desc__text" v-if="lang === 'en'">fill a form and we will contact you</p>
               <p class="form-desc__text" v-if="lang === 'port'">preencha o formulário e entraremos em contato </p>
             </div>
-            <div class="form-wrapper" v-if="lang === 'ru'">
-              <div class="form-input"><input name="" type="text" placeholder="имя" /></div>
-              <div class="form-input"><input name="" type="text" placeholder="телефон" /></div>
-              <div class="form-input"><input name="" type="text" placeholder="e-mail" /></div>
+            <form @submit="checkForm" method="post" action="#" class="form-wrapper" v-if="lang === 'ru'">
+              <div class="form-input"><input name="name" v-model="name" type="text" placeholder="имя" /></div>
+              <div class="form-input"><input name="phone" v-model="phone" type="text" placeholder="телефон" /></div>
+              <div class="form-input"><input name="email" v-model="email" type="text" placeholder="e-mail" /></div>
               <div class="form-submit">
-                <button>Отправить</button>
+                <button type="submit">Отправить</button>
               </div>
-            </div>
-            <div class="form-wrapper" v-if="lang === 'en'">
-              <div class="form-input"><input name="" type="text" placeholder="name" /></div>
-              <div class="form-input"><input name="" type="text" placeholder="phone" /></div>
-              <div class="form-input"><input name="" type="text" placeholder="e-mail" /></div>
+            </form>
+            <form @submit="checkForm" method="post" action="#" class="form-wrapper" v-if="lang === 'en'">
+              <div class="form-input"><input name="name" v-model="name" type="text" placeholder="name" /></div>
+              <div class="form-input"><input name="phone" v-model="phone" type="text" placeholder="phone" /></div>
+              <div class="form-input"><input name="email" v-model="email" type="text" placeholder="e-mail" /></div>
               <div class="form-submit">
-                <button>Send</button>
+                <button type="submit">Send</button>
               </div>
-            </div>
-            <div class="form-wrapper" v-if="lang === 'port'">
-              <div class="form-input"><input name="" type="text" placeholder="nome" /></div>
-              <div class="form-input"><input name="" type="text" placeholder="telefone" /></div>
-              <div class="form-input"><input name="" type="text" placeholder="e-mail" /></div>
+            </form>
+            <form @submit="checkForm" method="post" action="#" class="form-wrapper" v-if="lang === 'port'">
+              <div class="form-input"><input name="name" v-model="name" placeholder="nome" /></div>
+              <div class="form-input"><input name="phone" v-model="phone" placeholder="telefone" /></div>
+              <div class="form-input"><input name="email" v-model="email" placeholder="e-mail" /></div>
               <div class="form-submit">
-                <button>Enviar</button>
+                <button type="submit">Enviar</button>
               </div>
-            </div>
+            </form>
             <div class="form-policy">
               <p class="form-policy__text" v-if="lang === 'ru'">
                 Нажав кнопку “Отправить” вы даете согласие<br />на обработку Ваших <span class="policy-link" @click="$store.commit('policy/showPopup')">персональных данных</span>
@@ -74,16 +74,81 @@
         </div>
       </div>
     </div>
+    <notifications group="contact" />
   </section>
 </template>
 
 <script>
 import ContactBlock from '@/components/Contact/ContactBlock'
+import Axios from 'axios'
 export default {
   name: "Contact",
   props: ['lang'],
+  data(){
+    return{
+      name: null,
+      email: null,
+      phone: null
+    }
+  },
   components: {
     ContactBlock
+  },
+  methods: {
+    checkForm(e){
+      e.preventDefault();
+      if (this.name === null){
+        this.$notify({
+          group: 'contact',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Ваше ФИО</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.email === null){
+        this.$notify({
+          group: 'contact',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>E-mail</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.phone === null){
+        this.$notify({
+          group: 'contact',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Телефон</b>',
+          type: 'warn'
+        });
+        return
+      }
+
+      const data = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone
+      };
+
+      Axios({
+          method: 'post',
+          url: 'http://freedom.sitecriy.beget.tech/api/message',
+          data: data,
+          headers: {'Content-Type': 'multipart/form-data' }
+        })
+        .then((res) => {
+          this.$notify({
+            group: 'contact',
+            title: 'Сообщение отправлено',
+            text: 'Сообщение отправлено, с вами свяжется менеджер',
+            type: 'success'
+          })
+          this.name = null
+          this.phone = null
+          this.email = null
+        })
+    }
   }
 }
 </script>

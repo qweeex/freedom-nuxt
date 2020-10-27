@@ -170,12 +170,53 @@ export default {
   methods: {
     checkForm: function (e) {
 
-      this.success = true;
+      e.preventDefault();
 
-      setTimeout(() => {
-        this.$store.commit('callback/hiddenPopup');
-        this.success = false;
-      }, 1500);
+      if (this.name === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Ваше ФИО</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.company === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Название компании</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.position === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Должность</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.email === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>E-mail</b>',
+          type: 'warn'
+        });
+        return
+      }
+      if (this.phone === null){
+        this.$notify({
+          group: 'brief',
+          title: 'Ошибка',
+          text: 'Незаполнено поле: <b>Телефон</b>',
+          type: 'warn'
+        });
+        return
+      }
 
       Axios.post('http://freedom.sitecriy.beget.tech/api/message', {
         data: {
@@ -188,11 +229,21 @@ export default {
         }
       })
       .then((res) => {
-        console.log(res);
-      })
+        this.company = null;
+        this.site = null;
+        this.name = null;
+        this.position = null;
+        this.email = null;
+        this.phone = null;
+        this.$notify({
+          group: 'brief',
+          title: 'Сообщение отправлено',
+          text: 'Сообщение отправлено, с вами свяжется менеджер',
+          type: 'success'
+        })
+        this.$store.commit('callback/hiddenPopup');
+      });
 
-      e.preventDefault();
-      //this.success = true;
 
     }
   }

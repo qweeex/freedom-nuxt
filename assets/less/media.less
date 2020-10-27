@@ -48,7 +48,7 @@
   }
   .main{
     &-line{
-      height: 57%;
+      height: 76%;
       overflow: hidden;
     }
     &-bottom{
@@ -352,10 +352,9 @@
   .service{
     &-lines{
       top: 88px;
-      width: 525px;
+      width: 0;
       background: #000000;
       height: 10px;
-      left: 35%;
     }
     &-container{
       max-width: 1250px;
@@ -396,6 +395,9 @@
     }
   }
   .about{
+    &-start{
+      left: -338px !important;
+    }
     &-container{
       max-width: 1250px;
       zoom: 0.9;
@@ -428,6 +430,13 @@
   }
   .keys{
     padding-bottom: 150px;
+    &-logo{
+      &::before{
+        width: 14px;
+        left: 2px;
+        top: -152px;
+      }
+    }
     &-container{
       max-width: 1250px;
     }

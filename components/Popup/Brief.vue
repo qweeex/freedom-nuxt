@@ -457,7 +457,6 @@
         <span v-if="lang === 'port'">Sua inscrição foi enviada!</span>
       </div>
     </div>
-    <notifications group="brief" />
   </div>
 </template>
 
@@ -494,8 +493,7 @@ export default {
           group: 'brief',
           title: 'Ошибка',
           text: 'Незаполнено поле: <b>Ваше ФИО</b>',
-          type: 'warn',
-          duration: 100000,
+          type: 'warn'
         });
         return
       }
@@ -536,12 +534,12 @@ export default {
         return
       }
 
-      console.log('Отправляем')
 
-      /*const data = {
+      const data = {
         company: this.company,
         name: this.name,
         position: this.position,
+        site: this.site,
         email: this.email,
         phone: this.phone,
         question1: this.question1,
@@ -558,15 +556,25 @@ export default {
         headers: {'Content-Type': 'multipart/form-data' }
       })
       .then((res) => {
-        console.log(res)
-        this.success = true;
-      })
-      .finally(() => {
-        this.success = false;
-
-      })
-
-      //this.success = true;*/
+          this.company = null;
+          this.name = null;
+          this.position = null;
+          this.site = null;
+          this.email = null;
+          this.phone = null;
+          this.question1 = null;
+          this.question2 = null;
+          this.question3 = null;
+          this.question4 = null;
+          this.checkbox = [];
+          this.$notify({
+            group: 'brief',
+            title: 'Сообщение отправлено',
+            text: 'Сообщение отправлено, с вами свяжется менеджер',
+            type: 'success'
+          });
+          this.$store.commit('brief/hiddenPopup')
+      });
 
     }
   }
