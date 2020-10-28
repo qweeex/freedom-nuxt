@@ -135,10 +135,19 @@ export default {
     const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?lang=' + this.$props.lang;
     const { data } = await Axios.get(url);
     this.reviews = data;
+    window.addEventListener('resize', () => {
+      if(screen.width < 1050) {
+        this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+      } else {
+        this.phone = false;
+      }
+    })
   },
   created(){
     if (process.browser){
-      this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+      if(screen.width < 1050) {
+        this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+      }
     }
   }
 }

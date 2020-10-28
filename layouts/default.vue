@@ -5,3 +5,11 @@
 </template>
 
 
+<script>
+
+export default {
+  mounted() {
+    //alert(screen.width)
+  }
+}
+</script>

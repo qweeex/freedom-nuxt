@@ -9,7 +9,7 @@
                             <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.id">
                                 <div class="content-slide__wrapper">
                                     <div class="slider-img">
-                                      <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
+                                      <img @click="getKeys(keyt.id)" :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
                                       <div class="video-use" v-if="keyt.gallary[0].video !== ''">
                                         <img :data-fancybox="keyt.id" :href="keyt.gallary[0].video" src="~/assets/img/playVideo.svg" alt="">
                                       </div>
@@ -37,7 +37,7 @@
                     <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.id">
                       <div class="content-slide__wrapper">
                         <div class="slider-img">
-                          <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
+                          <img @click="getKeys(keyt.id)" :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
                           <div class="video-use" v-if="keyt.gallary[0].video !== ''">
                             <img :data-fancybox="keyt.id" :href="keyt.gallary[0].video" src="~/assets/img/playVideo.svg" alt="">
                           </div>
@@ -158,6 +158,7 @@
           direction: 'vertical',
           slidesPerView: 2,
           spaceBetween: 40,
+          allowTouchMove: false,
           scrollbar: {
             el: '.swiper-scrollbar',
             dragSize: 38,
@@ -190,7 +191,9 @@
       }),
       created(){
         if (process.browser){
-          this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+          if(screen.width < 1050) {
+            this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+          }
         }
       },
       methods: {
@@ -240,6 +243,15 @@
             this.KeysSwiper2.update();
           }
         })
+         window.addEventListener('resize', () => {
+           if(screen.width < 1050) {
+             this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+             this.KeysSwiper2.update();
+           } else {
+             this.phone = false;
+             this.KeysSwiper.update();
+           }
+         })
       }
     }
 </script>
@@ -247,6 +259,7 @@
 <style lang="less" >
     .PopupKeysActive{
         right: 0;
+      display: block !important;
     }
     .hiddenContent{
         opacity: 0;

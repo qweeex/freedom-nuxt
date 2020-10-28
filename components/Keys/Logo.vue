@@ -80,8 +80,28 @@
         },
         created(){
           if (process.browser){
-            this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+            if(screen.width < 1050) {
+              this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+            }
           }
+        },
+        mounted() {
+          window.addEventListener('resize', () => {
+            if(screen.width < 1050) {
+              this.phone =  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+              this.mySwiper2.update();
+            } else {
+              this.phone = false;
+              this.mySwiper.update();
+            }
+          })
+          window.addEventListener('scroll', () => {
+            if(this.phone) {
+              this.mySwiper2.update();
+            } else {
+              this.mySwiper.update();
+            }
+          })
         }
     }
 </script>
