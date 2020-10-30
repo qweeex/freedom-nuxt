@@ -28,6 +28,22 @@
               <a href="#contact" class="header-menu__link">Contatos</a>
             </nav>
           </div>
+          <div class="header-promo">
+            <img v-if="lang === 'ru'"
+                 data-fancybox="1"
+                 href="https://www.youtube.com/watch?v=50yl206PyCI"
+                 src="~/assets/img/promoplay.svg" alt="" />
+            <img v-if="lang === 'en'"
+                 data-fancybox="1"
+                 href="https://www.youtube.com/watch?v=vGg9lfAacsM"
+                 src="~/assets/img/promoplay.svg"
+                 alt="" />
+            <img v-if="lang === 'port'"
+                 src="~/assets/img/promoplay.svg"
+                 data-fancybox="1"
+                 href="https://www.youtube.com/watch?v=-cfFdQTDmmg"
+                 alt="" />
+          </div>
           <div class="header-music">
             <img src="~/assets/img/music.svg" v-if="this.audioStatus === false" v-on:click="PlaySound" alt="">
             <img src="~/assets/img/pause.svg" v-if="this.audioStatus === true" v-on:click="PauseSound" alt="">

@@ -1,8 +1,5 @@
 <template>
   <div class="work" id="consulting">
-    <div class="block" style="position: fixed; width: 100%; height: 50px; background: #000; color: #fff; font-size: 20px; z-index: 10;left: 0;top: 0;">
-      {{ tops }}
-    </div>
     <div class="work-title">
       <p class="work-title__text" v-if="lang === 'ru'">Как мы работаем</p>
       <p class="work-title__text" v-if="lang === 'en'">How We Work</p>
@@ -216,17 +213,12 @@
 export default {
   name: "Work",
   props: ['lang'],
-  data(){
-    return{
-      tops: 0
-    }
-  },
   methods:{
     WorkAnimate(){
       window.addEventListener('scroll', function(){
-        let HandsOneTopOffset = document.querySelector('#consulting').getBoundingClientRect().top + document.body.scrollTop;
-        this.tops = Number(document.querySelector('#consulting').offsetTop) - Number(document.querySelector('html').scrollTop);
-        if (HandsOneTopOffset <= 200 || this.tops <= 200){
+        let HandsOneTopOffset = document.querySelector('#consulting').getBoundingClientRect().top;
+        //let HandsOneTopOffset = document.querySelector('#consulting').getBoundingClientRect().top + document.body.scrollTop;
+        if (HandsOneTopOffset <= 200){
           document.querySelector('.item-5').classList.remove('work-stop');
           document.querySelector('.item-4').classList.remove('work-stop');
           document.querySelector('.item-3').classList.remove('work-stop');
@@ -237,17 +229,7 @@ export default {
     }
   },
   mounted() {
-    $(window).scroll(() => {
-      let HandsOneTopOffset = document.querySelector('#consulting').getBoundingClientRect().top + document.body.scrollTop;
-      this.tops = Number(document.querySelector('#consulting').offsetTop) - Number(document.querySelector('html').scrollTop);
-      if (HandsOneTopOffset <= 200 || this.tops <= 200){
-        document.querySelector('.item-5').classList.remove('work-stop');
-        document.querySelector('.item-4').classList.remove('work-stop');
-        document.querySelector('.item-3').classList.remove('work-stop');
-        document.querySelector('.item-2').classList.remove('work-stop');
-        document.querySelector('.item-1').classList.remove('work-stop');
-      }
-    })
+    this.WorkAnimate();
   }
 }
 </script>

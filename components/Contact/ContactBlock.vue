@@ -195,7 +195,8 @@
         );
       }
       window.addEventListener('scroll', function(){
-        let HandsOneTopOffset = document.querySelector('.contact').getBoundingClientRect().top + document.body.scrollTop;
+        //let HandsOneTopOffset = document.querySelector('.contact').getBoundingClientRect().top + document.body.scrollTop;
+        let HandsOneTopOffset = document.querySelector('.contact').getBoundingClientRect().top;
         if (HandsOneTopOffset <= 200){
           anim.play();
           if(!this.startAnimate){

@@ -39,7 +39,8 @@ export default {
   methods: {
     HandsAnimate(){
       window.addEventListener('scroll', function(){
-        let HandsOneTopOffset = document.querySelector('.document').getBoundingClientRect().top + document.body.scrollTop;
+        //let HandsOneTopOffset = document.querySelector('.document').getBoundingClientRect().top + document.body.scrollTop;
+        let HandsOneTopOffset = document.querySelector('.document').getBoundingClientRect().top;
         if (HandsOneTopOffset <= 200){
           document.querySelector('.document-img img').style.left = 0;
           document.querySelector('.phone-img img').style.left = 0;
