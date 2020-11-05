@@ -40,7 +40,7 @@ export default {
     { src: '~plugins/nuxt-swiper-plugin.js', mode: "client", ssr: false},
     { src: '~plugins/jquery.fancybox.min.js', mode: "client", ssr: false},
     { src: '~plugins/metrika.js', mode: "client", ssr: false},
-    { src: '~/plugins/vue-video-background', mode: "client", ssr: false},
+    { src: '~plugins/vue-loadscript.js', mode: "client", ssr: false},
     { src: '~/plugins/notifications.js', mode: "client", ssr: false}
   ],
 

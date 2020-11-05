@@ -27,9 +27,7 @@
     "vue-lottie": "^0.2.1",
     "vue-marquee-text-component": "^1.2.0",
     "vue-notification": "^1.3.20",
-    "vue-responsive-video-background-player": "^1.1.2",
-    "vue-video-background": "^0.1.2",
-    "vue-vimeo-player": "^0.1.0",
+    "vue-plugin-load-script": "^1.3.2",
     "vue-yandex-metrika": "^1.8.3"
   },
   "devDependencies": {

@@ -1,19 +1,17 @@
 <template>
   <div>
-      <section class="main">
+      <section class="main" >
+        <div class="main-video" id="tv"></div>
         <div class="main-line video-elem">
-          <img v-if="lang === 'ru'"
-               data-fancybox="1"
+          <img @click="Video('50yl206PyCI')" v-if="lang === 'ru'"
                href="https://www.youtube.com/watch?v=50yl206PyCI"
                src="~/assets/img/scroll-line.svg" alt="" />
-          <img v-if="lang === 'en'"
-               data-fancybox="1"
+          <img @click="Video('vGg9lfAacsM')" v-if="lang === 'en'"
                href="https://www.youtube.com/watch?v=vGg9lfAacsM"
                src="~/assets/img/scroll-line__en.svg"
                alt="" />
-          <img v-if="lang === 'port'"
+          <img @click="Video('-cfFdQTDmmg')" v-if="lang === 'port'"
                src="~/assets/img/scroll-line__port.svg"
-               data-fancybox="1"
                href="https://www.youtube.com/watch?v=-cfFdQTDmmg"
                alt="" />
         </div>
@@ -32,6 +30,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   name: "MainScreen",
   props: ['lang'],
@@ -96,10 +95,39 @@ export default {
       });
 
     },
-    StopVideo(){
-      /*document.querySelectorAll('.video-elem').forEach((elem) => {
-        elem.classList.remove('video-elem')
-      })*/
+    Video(id){
+      if (typeof(YT) == 'undefined' || typeof(YT.Player) == 'undefined') {
+        // Load youtube api
+        Vue.loadScript('https://www.youtube.com/player_api');
+
+        window.onYouTubePlayerAPIReady = function () {
+          onYouTubePlayer();
+        };
+        let player;
+        function onYouTubePlayer() {
+          player = new YT.Player('tv', {
+            videoId: id,
+            height: '390',
+            width: '640',
+            playerVars: {autoplay: 0, autohide: 1, modestbranding: 0, rel: 0, showinfo: 0, controls: 0, disablekb: 1, iv_load_policy: 3},
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+        function onPlayerReady(event) {
+          event.target.playVideo();
+        }
+        function onPlayerStateChange(event) {
+          if(event.data === 0 || event.data === 2 ){
+            document.querySelector('#tv').style.visibility = 'hidden';
+            document.querySelector('#tv').style.opacity = 0;
+          }
+        }
+        document.querySelector('#tv').style.visibility = 'visible';
+        document.querySelector('#tv').style.opacity = 1;
+      }
     }
   },
   mounted() {
@@ -114,5 +142,12 @@ export default {
 </script>
 
 <style lang="less">
-
+iframe#tv {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1000000;
+  visibility: hidden;
+  opacity: 0;
+}
 </style>
