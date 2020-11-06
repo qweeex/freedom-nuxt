@@ -13,10 +13,10 @@
           Quero <br>preencher o brief
         </p>
       </div>
-      <div class="document-img"><img src="~/assets/img/brif.svg" alt="" /></div>
+      <div class="document-img"><img @click="$store.commit('brief/showPopup')" src="~/assets/img/brif.svg" alt="" /></div>
     </section>
     <section class="phone">
-      <div class="phone-img"><img src="~/assets/img/phone.svg" alt="" /></div>
+      <div class="phone-img"><img @click="$store.commit('callback/showPopup')" src="~/assets/img/phone.svg" alt="" /></div>
       <div class="phone-title">
         <p v-if="lang === 'ru'" class="phone-title__text" @click="$store.commit('callback/showPopup')">
           ХОЧУ, чтобы<br />мне перезвонили

@@ -15,7 +15,7 @@
       <div class="callback-form">
         <div v-if="lang === 'ru'" class="text">
           <p>
-          Настоящая Политика конфиденциальности персональных данных (далее – Политика конфиденциальности) действует в отношении всей информации, которую сайт ИП Титаева Юлиана Валерьевна, расположенный на доменном имени www.__, может получить о Пользователе во время использования сайта www.__, программ и продуктов этого сайта.
+          Настоящая Политика конфиденциальности персональных данных (далее – Политика конфиденциальности) действует в отношении всей информации, которую сайт ИП Титаева Юлиана Валерьевна, расположенный на доменном имени www.freedom-pr.com, может получить о Пользователе во время использования сайта www.freedom-pr.com, программ и продуктов этого сайта.
 
           Мы собираем, используем и охраняем персональные данные, которые Вы предоставляете нам при использовании нашего сайта (далее – «сайт») с любого устройства и при коммуникации с нами в любой форме, в соответствии с данной Политикой.
 
@@ -115,7 +115,7 @@
         </div>
         <div v-if="lang === 'en'" class="text">
           <p>
-          This Privacy Policy in relation to personal data (“the Privacy Policy”) applies to all information that the website of Individual Entrepreneur Titaeva Yuliana Valerievna, domain name www .__, can receive about the User of the website www .__, programs and products of this site.
+          This Privacy Policy in relation to personal data (“the Privacy Policy”) applies to all information that the website of Individual Entrepreneur Titaeva Yuliana Valerievna, domain name www.freedom-pr.com, can receive about the User of the website www.freedom-pr.com, programs and products of this site.
 
           We collect, use and protect personal data which you provide us when accessing our website (“the Website”) from any device and when communicating with us in any form, pursuant to this Policy.
 
@@ -214,7 +214,7 @@
         </div>
         <div v-if="lang === 'port'" class="text">
           <p>
-          A presente Política de confidencialidade em relação aos dados pessoais (doravante – Política de confidencialidade) é vigente em relação a toda informação, que o site de EI Titaieva Juliana Valerievna, situado no domínio www.__, poderá receber sobre o Usuário durante o uso do site www.__, programas e produtos deste site.
+          A presente Política de confidencialidade em relação aos dados pessoais (doravante – Política de confidencialidade) é vigente em relação a toda informação, que o site de EI Titaieva Juliana Valerievna, situado no domínio www.freedom-pr.com, poderá receber sobre o Usuário durante o uso do site www.freedom-pr.com, programas e produtos deste site.
 
           Coletamos, usamos e protegemos os dados pessoais, que você nos oferece ao visitar o nosso site  (doravante – «site») a partir de qualquer dispositivo e durante a comununicação conosco em qualquer forma, de acordo com a Política presente.
 

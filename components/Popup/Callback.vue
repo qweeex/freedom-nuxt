@@ -218,7 +218,7 @@ export default {
         return
       }
 
-      Axios.post('http://freedom.sitecriy.beget.tech/api/message', {
+      Axios.post(this.$store.state.site.url + '/api/message', {
         data: {
           company: this.company,
           site: this.site,

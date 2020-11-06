@@ -103,35 +103,45 @@ export default {
         window.onYouTubePlayerAPIReady = function () {
           onYouTubePlayer();
         };
-        let player;
-        function onYouTubePlayer() {
-          player = new YT.Player('tv', {
-            videoId: id,
-            height: '390',
-            width: '640',
-            playerVars: {autoplay: 0, autohide: 1, modestbranding: 0, rel: 0, showinfo: 0, controls: 0, disablekb: 1, iv_load_policy: 3},
-            events: {
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-          });
-        }
-        function onPlayerReady(event) {
-          event.target.playVideo();
-        }
-        function onPlayerStateChange(event) {
-          if(event.data === 0 || event.data === 2 ){
-            document.querySelector('#tv').style.visibility = 'hidden';
-            document.querySelector('#tv').style.opacity = 0;
-          }
-        }
-        document.querySelector('#tv').style.visibility = 'visible';
-        document.querySelector('#tv').style.opacity = 1;
       }
-    }
+      if(typeof(YT) !== 'undefined' || typeof(YT.Player) !== 'undefined'){
+        window.onYouTubePlayerAPIReady = function () {
+          onYouTubePlayer();
+        };
+      }
+      let player;
+      function onYouTubePlayer() {
+        player = new YT.Player('tv', {
+          videoId: id,
+          height: '390',
+          width: '640',
+          playerVars: {autoplay: 0, autohide: 1, modestbranding: 0, rel: 0, showinfo: 0, controls: 0, disablekb: 1, iv_load_policy: 3},
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+      function onPlayerStateChange(event) {
+        if(event.data === 0 || event.data === 2 ){
+          document.querySelector('#tv').style.visibility = 'hidden';
+          document.querySelector('#tv').style.opacity = 0;
+        }
+      }
+      document.querySelector('#tv').style.visibility = 'visible';
+      document.querySelector('#tv').style.opacity = 1;
+    },
+
   },
   mounted() {
     this.MainAnimate();
+    if (typeof(YT) == 'undefined' || typeof(YT.Player) == 'undefined') {
+      // Load youtube api
+      Vue.loadScript('https://www.youtube.com/player_api');
+    }
   },
   created(){
     if(process.client){
@@ -145,9 +155,24 @@ export default {
 iframe#tv {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
   z-index: 1000000;
   visibility: hidden;
   opacity: 0;
+  left: 0;
+  top: 0;
+}
+@media(max-width: 600px){
+  iframe#tv {
+    width: 100%;
+    height: 28vh;
+    z-index: 1000000;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+  }
 }
 </style>

@@ -133,7 +133,7 @@ export default {
 
       Axios({
           method: 'post',
-          url: 'http://freedom.sitecriy.beget.tech/api/message',
+          url: this.$store.state.site.url + '/api/message',
           data: data,
           headers: {'Content-Type': 'multipart/form-data' }
         })

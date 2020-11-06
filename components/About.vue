@@ -53,19 +53,26 @@
           <p class="role">Head of the Agency</p>
         </div>
         <div class="about-master__title" v-if="lang === 'port'">
-          <p class="name">Juliana Titaeva </p>
-          <p class="role">Chefe da agência</p>
+          <p class="name">Juliana Titaeva</p>
+          <p class="role">Chefe da Agência</p>
         </div>
         <div class="about-master__desc">
             <span v-if="lang === 'ru'">
-              9 лет опыта работы, в том числе, в крупнейших международных PR-агентствах. Полностью контролирует
-              деятельность агентства и развитие бизнеса. Владеет английским и португальским.
+              9 лет опыта работы, в том числе в крупнейших международных PR-агентствах на проектах с Samsung, Starbucks, Malaysia Tourism, HP, Coca-Cola HBC, STADA и пр.
+
+              Полностью контролирует деятельность агентства и развитие бизнеса.
+
+              Владеет английским и португальским.
             </span>
             <span v-if="lang === 'en'">
-                9 years in business, including work in the largest international PR agencies on projects with Samsung, Starbucks, Malaysia Tourism, HP, Coca-Cola HBC, STADA, etc. Keeps overall control of the agency’s processes and business development. Knows English also Portuguese.
-            </span>
+9 years in business, including work in the largest international PR agencies on projects with Samsung, Starbucks, Malaysia Tourism, HP, Coca-Cola HBC, STADA, etc.
+
+Keeps overall control of the agency’s processes and business development. Knows English also Portuguese.            </span>
             <span v-if="lang === 'port'">
-                9 anos de experiência de trabalho, inclusive nas maiores PR-agências internacionais. Controla inteiramente a atividade da agência e o desenvolvimento do negócio. <br>Domina inglês e português.
+                9 anos de experiência de trabalho, inclusive nas maiores PR-agências internacionais nos projetos da Samsung, Starbucks, Malaysia Tourism, HP, coca-Cola, HBC, STADA, etc.
+                Controla inteiramente a atividade da agência e o desenvolvimento do negócio.
+
+                Domina inglês e português.
             </span>
         </div>
       </div>

@@ -9,7 +9,7 @@
                             <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.id">
                                 <div class="content-slide__wrapper">
                                     <div class="slider-img">
-                                      <img @click="getKeys(keyt.id)" :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
+                                      <img @click="getKeys(keyt.id)" :src="$store.state.site.url + '/assets/images/' + keyt.gallary[0].image" alt="" />
                                       <div class="video-use" v-if="keyt.gallary[0].video !== ''">
                                         <img :data-fancybox="keyt.id" :href="keyt.gallary[0].video" src="~/assets/img/playVideo.svg" alt="">
                                       </div>
@@ -37,7 +37,7 @@
                     <div class="content-slide swiper-slide" v-for="keyt in keysInfo" :key="keyt.id">
                       <div class="content-slide__wrapper">
                         <div class="slider-img">
-                          <img @click="getKeys(keyt.id)" :src="'http://freedom.sitecriy.beget.tech/assets/images/' + keyt.gallary[0].image" alt="" />
+                          <img @click="getKeys(keyt.id)" :src="$store.state.site.url + '/assets/images/' + keyt.gallary[0].image" alt="" />
                           <div class="video-use" v-if="keyt.gallary[0].video !== ''">
                             <img :data-fancybox="keyt.id" :href="keyt.gallary[0].video" src="~/assets/img/playVideo.svg" alt="">
                           </div>
@@ -86,7 +86,7 @@
                           <div v-swiper:popupSliders="popupSlider" class="keys-sli swiper-container">
                             <div class="keys-wrapper swiper-wrapper">
                               <div class="swiper-slide" v-for="photo in popupImg" :key="photo.id">
-                                <img :src="'http://freedom.sitecriy.beget.tech/assets/images/' + photo.image" alt="" />
+                                <img :src="$store.state.site.url + '/assets/images/' + photo.image" alt="" />
                                 <div class="video-use" v-if="photo.video !== ''">
                                   <img :data-fancybox="photo.id" :href="photo.video" src="~/assets/img/playVideo.svg" alt="">
                                 </div>
@@ -208,7 +208,7 @@
             return false
           },
           async getKeys(id){
-            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?id=' + id + '&lang=' + this.$props.lang;
+            const url = this.$store.state.site.url + '/api/getkeys?id=' + id + '&lang=' + this.$props.lang;
             await axios.get(url)
               .then((res) => {
                 console.log(res.data.data[0])
@@ -224,7 +224,7 @@
               })
           },
           async getKey(){
-            const url = 'http://freedom.sitecriy.beget.tech/api/getkeys?lang=' + this.$props.lang;
+            const url = this.$store.state.site.url + '/api/getkeys?lang=' + this.$props.lang;
             const { data } = await axios.get(url);
             this.keysInfo = data.data;
             if (this.phone === false){

@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     getReviews: function (id) {
-      const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?id=' + id + '&lang=' + this.$props.lang;
+      const url = this.$store.state.site.url + '/api/getreviews?id=' + id + '&lang=' + this.$props.lang;
       Axios.get(url)
         .then((res) => {
           let data = res.data;
@@ -132,7 +132,7 @@ export default {
     }
   },
   async mounted() {
-    const url = 'http://freedom.sitecriy.beget.tech/api/getreviews?lang=' + this.$props.lang;
+    const url = this.$store.state.site.url + '/api/getreviews?lang=' + this.$props.lang;
     const { data } = await Axios.get(url);
     this.reviews = data;
     window.addEventListener('resize', () => {
